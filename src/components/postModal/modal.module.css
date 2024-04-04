@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
 .backdrop {
     position: fixed;
     top: 0;
@@ -57,7 +59,7 @@
     line-height: 1px;
     color: var(--bg-dark);
     font-size: 1.8rem;
-    font-family: "Poppins";
-    font-weight: 500;
+    font-family: "Playfair Display";
     box-shadow: 0 3px 8px rgba(17, 6, 22, 0.2);
+    z-index: 3;
 }

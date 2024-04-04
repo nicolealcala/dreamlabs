@@ -1,4 +1,4 @@
-import AdminForm from "@/components/adminControls/AdminForm";
+import AdminForm from "@/components/adminControls/adminForm";
 import { addBlog } from "@/lib/actions";
 
 export const metadata = {

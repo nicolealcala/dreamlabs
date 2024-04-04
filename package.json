@@ -1,5 +1,5 @@
 {
-  "name": "dreamlabs",
+  "name": "next14starter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,15 +13,19 @@
     "@tiptap/pm": "^2.2.4",
     "@tiptap/react": "^2.2.4",
     "@tiptap/starter-kit": "^2.2.4",
+    "aws-sdk": "^2.1590.0",
+    "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
-    "mongoose": "^8.3.0",
-    "next": "14.1.4",
+    "lucide-react": "^0.363.0",
+    "mongoose": "^8.2.3",
+    "next": "14.0.4",
+    "next-auth": "^5.0.0-beta.16",
     "react": "^18",
     "react-dom": "^18",
-    "sweetalert2": "^11.10.7"
+    "sweetalert2": "^11.6.13"
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.1.4"
+    "eslint-config-next": "14.0.4"
   }
 }

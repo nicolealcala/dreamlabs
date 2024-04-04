@@ -8,7 +8,7 @@ import bcrypt from "bcrypt"
 export const addBlog = async (formData) => {
     const { title, content, img, userId } = Object.fromEntries(formData);
 
-    const slug = typeof title === "string" ? title.replace(/[<>,!?:/\\-]/g, "").split(" ").join("-").toLowerCase() : "";
+    const slug = typeof title === "string" ? title.replace(/[<>,!?:/&'\\-]/g, "").split(" ").join("-").toLowerCase() : "";
     console.log(title, content, img, userId, slug);
     try {
         connectToDb()

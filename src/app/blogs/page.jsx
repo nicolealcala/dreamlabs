@@ -43,7 +43,6 @@ const Blogs = async () => {
               btnName="+ Create Blog"
               btnId=""
             />
-            {/* <Modal userId={JSON.parse(JSON.stringify(user._id))} /> */}
           </>
         ) : (
           <>

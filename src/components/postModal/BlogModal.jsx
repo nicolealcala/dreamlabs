@@ -63,6 +63,7 @@ const BlogModal = ({ modalOpen, setModalOpen, userId }) => {
   };
   return (
     <>
+      <input type="hidden" name="" />
       {modalOpen && (
         <>
           <div className={styles.backdrop}></div>
