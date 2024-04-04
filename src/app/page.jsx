@@ -1,95 +1,53 @@
+import Link from "next/link";
 import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
+    <div className="row mx-0 py-5">
+      <div className="col-lg-6 d-flex flex-column justify-content-center align-items-start gap-3">
+        <h1>
+          <strong className="txt-size-large">Your Idea in Motion.</strong>
+        </h1>
+        <p style={{ width: "90%" }}>
+          Where Creativity Meets Community! Join us on a journey of inspiration
+          and collaboration, where designers, developers, and aspiring creators
+          unite to share ideas, foster innovation, and cultivate a vibrant,
+          supportive network.
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+
+        <div className="py-2">
+          <Link href="/about" className="btn primary-btn me-3">
+            Learn More
+          </Link>
+          <Link href="/contact" className="btn secondary-btn ms-2">
+            Contact Us
+          </Link>
+        </div>
+        <div className="col-11 brandsContainer my-3">
+          <Image
+            src="/brands.png"
+            alt="Brands"
+            fill
+            sizes="100vw"
+            className="brands img-contain"
+          />
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+      <div className="col-lg-6 d-none d-lg-flex justify-content-center align-items-center">
+        <a href="https://storyset.com/people" target="_blank">
+          <div className="img-container">
+            <Image
+              src="/home.png"
+              alt="Home-Img"
+              fill
+              sizes="100vw"
+              className="img-contain"
+            />
+          </div>
         </a>
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default Home;
