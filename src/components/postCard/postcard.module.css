@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.imgContainer {
+    min-width: 90%;
+    height: 350px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.date {
+    font-size: 12px;
+}
+
+.title {
+    width: 95%;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.desc {
+    width: 95%;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: var(--txt-soft);
+    white-space: pre-line;
+}
