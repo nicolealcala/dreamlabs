@@ -1,0 +1,12 @@
+#edit,
+#delete {
+    color: var(--txt-soft);
+}
+
+#edit:hover {
+    color: aqua;
+}
+
+#delete:hover {
+    color: red;
+}
