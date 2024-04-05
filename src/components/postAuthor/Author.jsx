@@ -28,7 +28,11 @@ const Author = async ({ userId, date }) => {
       <div className="col-8 d-flex flex-column justify-content-center">
         <h6 className="txt-weight-mid my-0">{user?.username}</h6>
         <p className="txt-color-soft txt-size-small my-0">
-          {new Date(date).toLocaleDateString("en-US", options)}
+          {new Date(date).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })}
         </p>
       </div>
     </div>
