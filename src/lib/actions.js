@@ -63,33 +63,49 @@ export const addComment = async (formData) => {
     try {
         connectToDb();
         const newComment = new Comment({ content, userId, blogId })
-        await newComment.save();
+        const savedComment = await newComment.save();
         revalidatePath("/blogs/[slug]");
-        return newComment;
+        const plainComment = {
+            ...savedComment.toJSON(),
+            _id: savedComment._id.toJSON()
+        }
+        return plainComment;
     } catch (err) {
         console.log(err);
         throw new Error(err);
     }
 }
 
-export const updateComment = async (prev, formData) => {
-    const { content, userId, blogId } = Object.fromEntries(formData);
-    console.log(content, userId, blogId);
-    return { success: true }
+export const updateComment = async (id, formData) => {
+    const { content } = Object.fromEntries(formData);
+    try {
+        connectToDb()
+        const comment = await Comment.findByIdAndUpdate(id, { content });
+        revalidatePath("/blogs/[slug]");
+        const plainComment = {
+            ...comment.toJSON(),
+            _id: comment._id.toJSON()
+        }
+        console.log(plainComment);
+        return plainComment;
+    } catch (err) {
+        console.log(err)
+        throw new Error(err);
+    }
 }
 
-export const deleteComment = async (prev, id) => {
+export const deleteComment = async (id) => {
     try {
         connectToDb();
-        await Comment.findByIdAndDelete({ id })
+        await Comment.findByIdAndDelete({ _id: id })
         revalidatePath("/blogs/[slug]");
         return { success: true }
     } catch (err) {
         console.log(err)
         throw new Error(err);
     }
-
 }
+
 export const deleteUser = async (formData) => {
     const { id } = Object.fromEntries(formData);
     try {

@@ -84,6 +84,7 @@ export const getUsers = async () => {
 }
 
 export const getComments = async (blogId) => {
+    noStore();
     try {
         connectToDb();
         const comments = await Comment.find({ blogId });
