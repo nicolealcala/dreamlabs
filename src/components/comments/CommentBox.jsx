@@ -1,12 +1,14 @@
 import { getUser } from "@/lib/data";
 import Image from "next/image";
-import styles from "./comment.module.css";
+import EditBtn from "./EditBtn";
+import { createMarkup } from "@/lib/utils";
+import DeleteBtn from "./DeleteBtn";
 
 const CommentBox = async ({ session, comment, poster }) => {
   const user = await getUser(comment?.userId);
 
   return (
-    <div className="d-flex commentForm" data-bs-theme="dark">
+    <div className="d-flex commentForm mb-3" data-bs-theme="dark">
       <Image
         src={user?.img}
         width={35}
@@ -14,30 +16,38 @@ const CommentBox = async ({ session, comment, poster }) => {
         alt="Commentor Image"
         className="rounded-pill"
       />
-      <div className="d-flex flex-column w-100 ms-3">
-        <div className="col-12 form-control commentBox border-0">
-          <p className="mb-1 txt-size-small ">
-            <span className="txt-weight-mid">
-              {user?.username}
-              {poster === comment.userId && <span> &#x2022; Author</span>}
-            </span>
-          </p>
-          <p className="mb-1 txt-weight-light">{comment?.content}</p>
+      <div className="d-flex flex-column w-auto ms-3">
+        <div className="form-control commentBox border-0">
+          <div className="d-flex justify-content-between align-items-center mb-2">
+            <div className="me-3">
+              <p className="txt-size-mid my-0 txt-weight-mid">
+                {user?.username}
+                {poster === comment.userId && (
+                  <span className="txt-weight-normal txt-color-mid txt-size-small">
+                    {" "}
+                    &#x2022; Author
+                  </span>
+                )}
+              </p>
+            </div>
+            <div>
+              <p className="txt-size-small my-0">
+                {new Date(comment.createdAt).toLocaleDateString("en-US", {
+                  hour: "numeric",
+                  minute: "numeric",
+                })}
+              </p>
+            </div>
+          </div>
+          <div
+            className="mb-1 txt-weight-light"
+            dangerouslySetInnerHTML={createMarkup(comment?.content)}
+          ></div>
         </div>
         {session?.user.id === comment.userId && (
           <div className="d-flex align-items-center mt-1">
-            <button
-              className="bg-transparent border-0 txt-size-small me-2"
-              id={styles.edit}
-            >
-              Edit
-            </button>
-            <button
-              className="bg-transparent border-0 txt-size-small"
-              id={styles.delete}
-            >
-              Delete
-            </button>
+            <EditBtn comment={comment} />
+            <DeleteBtn commentId={comment?._id} />
           </div>
         )}
       </div>
