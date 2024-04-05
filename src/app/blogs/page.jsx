@@ -1,5 +1,6 @@
 import PostCard from "@/components/postCard/PostCard";
-import ToggleModal from "@/components/postModal/toggleModal";
+// import ToggleModal from "@/components/postModal/toggleModal";
+import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
 import { getBlogs } from "@/lib/data";
 
@@ -27,7 +28,6 @@ const Blogs = async () => {
 
   // FETCH DATA WITHOUT AN API
   const blogs = await getBlogs();
-
   const session = await auth();
 
   if (blogs.length === 0) {
@@ -36,13 +36,8 @@ const Blogs = async () => {
         <h2>No posts yet.</h2>
         {session?.user.isAdmin ? (
           <>
-            {" "}
             <p>Come back later or create a new post.</p>
-            <ToggleModal
-              userId={session?.user.id}
-              btnName="+ Create Blog"
-              btnId=""
-            />
+            <AddBtn btnName="+ Create Blog" userId={session?.user.id} />
           </>
         ) : (
           <>
@@ -56,7 +51,8 @@ const Blogs = async () => {
   return (
     <div className="row mx-0 gx-5 py-5">
       {session?.user.isAdmin && (
-        <ToggleModal userId={session?.user.id} btnName="+" btnId="addBtn" />
+        // <ToggleModal userId={session?.user.id} btnName="+" btnId="addBtn" />
+        <AddBtn btnId="addBtn" btnName="+" userId={session?.user.id} />
       )}
 
       {blogs.map((blog) => (
