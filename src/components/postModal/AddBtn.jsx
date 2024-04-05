@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import styles from "./modal.module.css";
-import ModalBlog from "./Modal";
+import CreateModal from "./CreateModal";
 const AddBtn = ({ btnId, btnName, userId }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -14,7 +14,7 @@ const AddBtn = ({ btnId, btnName, userId }) => {
       >
         <span className="txt-weight-mid">{btnName}</span>
       </button>
-      <ModalBlog
+      <CreateModal
         showModal={showModal}
         setShowModal={setShowModal}
         userId={userId}
