@@ -29,7 +29,7 @@ const BlogPost = async ({ params }) => {
   const blog = await getBlog(slug);
   if (!blog) return <NotFound />;
 
-  const comments = await getComments(blog.id);
+  const comments = await getComments(blog._id);
 
   return (
     <div className={`row mx-0 pb-5 ${styles.body}`}>
@@ -63,35 +63,35 @@ const BlogPost = async ({ params }) => {
             dangerouslySetInnerHTML={createMarkup(blog.content)}
           ></div>
         </div>
-      </div>
-      <hr className="mt-4 mb-0" />
-      {comments.length === 0 && (
-        <div className="col-12 txt-color-soft mt-3">
-          This post has no comments yet.
-        </div>
-      )}
-      <div className="col-12 mt-3">
-        <CommentForm session={session} blogId={blog.id} />
-      </div>
 
-      {comments.length > 0 && (
-        <>
-          <div className="col-12 txt-color-soft my-3">
-            {comments.length > 0 && "Comments"}
+        <hr className="mt-4 mb-0" />
+        <div className="w-100 px-3 rounded-4 mt-4">
+          {comments.length === 0 && (
+            <div className="col-12 mt-3">This post has no comments yet.</div>
+          )}
+          <div className="col-12 mt-3">
+            <CommentForm session={session} blogId={blog.id} />
           </div>
-          {comments.map((comment) => (
+          <hr className="my-4" />
+          {comments.length > 0 && (
             <>
-              <CommentBox
-                session={session}
-                comment={comment}
-                poster={blog.userId}
-                key={comment.id}
-              />
-              <hr className="my-2" />
+              <div className="col-12 txt-weight-normal mt-3 mb-4">
+                {comments.length > 0 && "Comments"}
+              </div>
+              {comments.map((comment) => (
+                <>
+                  <CommentBox
+                    session={session}
+                    comment={comment}
+                    poster={blog.userId}
+                    key={comment._id}
+                  />
+                </>
+              ))}
             </>
-          ))}
-        </>
-      )}
+          )}
+        </div>
+      </div>
     </div>
   );
 };
