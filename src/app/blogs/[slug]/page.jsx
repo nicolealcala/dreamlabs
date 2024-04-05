@@ -47,7 +47,7 @@ const BlogPost = async ({ params }) => {
           </div>
           <div className="col-12 col-lg-6">
             <Suspense fallback={<div>Loading...</div>}>
-              <Author userId={blog.userId} date={blog.createdAt} />
+              <Author userId={blog.userId} date={blog.updatedAt} />
             </Suspense>
           </div>
           {session?.user.id === blog.userId && (
@@ -70,7 +70,7 @@ const BlogPost = async ({ params }) => {
             <div className="col-12 mt-3">This post has no comments yet.</div>
           )}
           <div className="col-12 mt-3">
-            <CommentForm session={session} blogId={blog.id} />
+            <CommentForm session={session} blogId={blog._id} />
           </div>
           <hr className="my-4" />
           {comments.length > 0 && (

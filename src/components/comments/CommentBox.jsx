@@ -32,7 +32,7 @@ const CommentBox = async ({ session, comment, poster }) => {
             </div>
             <div>
               <p className="txt-size-small my-0">
-                {new Date(comment.createdAt).toLocaleDateString("en-US", {
+                {new Date(comment.updatedAt).toLocaleDateString("en-US", {
                   hour: "numeric",
                   minute: "numeric",
                 })}

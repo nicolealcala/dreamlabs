@@ -26,7 +26,7 @@ const PostCard = ({ item }) => {
       </div>
       <div>
         <span className={styles.date}>
-          {new Date(item.createdAt).toLocaleDateString("en-US", {
+          {new Date(item.updatedAt).toLocaleDateString("en-US", {
             month: "long",
             day: "numeric",
             year: "numeric",
