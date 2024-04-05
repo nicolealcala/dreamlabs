@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { updateComment } from "@/lib/actions";
 import Swal from "sweetalert2";
+import { updateComment } from "@/lib/actions";
+
 import Tiptap from "../tiptap/Tiptap";
 
 const EditModal = ({ showModal, setShowModal, comment }) => {
@@ -47,7 +48,6 @@ const EditModal = ({ showModal, setShowModal, comment }) => {
   };
 
   const handleClose = () => {
-    setContent(comment?.content);
     setShowModal(false);
   };
   return (
