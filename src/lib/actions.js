@@ -1,6 +1,6 @@
 "use server"
 import { revalidatePath } from "next/cache";
-import { Blog, User, Comment } from "./models";
+import { User, Blog, Comment } from "./models";
 import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcrypt"
@@ -9,7 +9,6 @@ export const addBlog = async (formData) => {
     const { title, content, img, userId } = Object.fromEntries(formData);
 
     const slug = typeof title === "string" ? title.replace(/[<>,!?:/&'\\-]/g, "").split(" ").join("-").toLowerCase() : "";
-    console.log(title, content, img, userId, slug);
     try {
         connectToDb()
         const newBlog = new Blog({
@@ -21,7 +20,11 @@ export const addBlog = async (formData) => {
         })
         const savedBlog = await newBlog.save();
         revalidatePath("/blogs");
-        return savedBlog;
+        const plainBlog = {
+            ...savedBlog.toJSON(),
+            _id: savedBlog._id.toJSON()
+        };
+        return plainBlog;
     } catch (err) {
         console.log(err)
         throw new Error(err);
@@ -33,8 +36,8 @@ export const updateBlog = async (id, formData) => {
     try {
         connectToDb()
         await Blog.findByIdAndUpdate(id, { title, content, img, slug });
-
         revalidatePath("/blogs");
+        return;
     } catch (err) {
         console.log(err)
         throw new Error(err);
