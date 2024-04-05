@@ -1,5 +1,4 @@
 import PostCard from "@/components/postCard/PostCard";
-// import ToggleModal from "@/components/postModal/toggleModal";
 import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
 import { getBlogs } from "@/lib/data";
@@ -51,12 +50,11 @@ const Blogs = async () => {
   return (
     <div className="row mx-0 gx-5 py-5">
       {session?.user.isAdmin && (
-        // <ToggleModal userId={session?.user.id} btnName="+" btnId="addBtn" />
         <AddBtn btnId="addBtn" btnName="+" userId={session?.user.id} />
       )}
 
       {blogs.map((blog) => (
-        <div className="col-md-6 col-lg-4 mb-4" key={blog.id}>
+        <div className="col-md-6 col-lg-4 mb-4" key={blog._id}>
           <PostCard item={blog} />
         </div>
       ))}
