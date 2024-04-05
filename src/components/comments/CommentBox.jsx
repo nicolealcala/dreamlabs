@@ -36,6 +36,8 @@ const CommentBox = async ({ session, comment, poster }) => {
                   hour: "numeric",
                   minute: "numeric",
                 })}
+                {comment.createdAt.getTime() !==
+                  comment.updatedAt.getTime() && <span> (Edited)</span>}
               </p>
             </div>
           </div>
