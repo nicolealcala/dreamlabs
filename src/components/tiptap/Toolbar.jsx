@@ -10,7 +10,7 @@ import {
   Code,
 } from "lucide-react";
 
-const Toolbar = ({ editor }) => {
+const Toolbar = ({ editor, disable }) => {
   const buttons = [
     {
       action: () => editor.chain().focus().toggleBold().run(),
@@ -72,7 +72,7 @@ const Toolbar = ({ editor }) => {
             e.preventDefault();
             button.action();
           }}
-          disabled={button.disabled}
+          disabled={disable}
           className={`toolbarBtn ${
             button.active ? "bg-mid text-light" : "bg-transparent"
           }`}

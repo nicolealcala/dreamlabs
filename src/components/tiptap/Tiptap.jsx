@@ -3,7 +3,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
 import Underline from "@tiptap/extension-underline";
 
-const Tiptap = ({ onChange, content }) => {
+const Tiptap = ({ onChange, text, disable }) => {
   const handleChange = (newContent) => {
     onChange(newContent);
   };
@@ -15,6 +15,7 @@ const Tiptap = ({ onChange, content }) => {
         spellcheck: true,
       },
     },
+    content: text,
     onUpdate: ({ editor }) => {
       handleChange(editor.getHTML());
     },
@@ -29,7 +30,12 @@ const Tiptap = ({ onChange, content }) => {
         }}
       />
       <hr className="my-0" />
-      <Toolbar editor={editor} content={content} className="toolbar" />
+      <Toolbar
+        editor={editor}
+        content={text}
+        className="toolbar"
+        disable={disable}
+      />
     </div>
   );
 };
