@@ -7,8 +7,8 @@ import bcrypt from "bcrypt"
 
 export const addBlog = async (formData) => {
     const { title, content, img, userId } = Object.fromEntries(formData);
-
     const slug = typeof title === "string" ? title.replace(/[<>,!?:/&'\\-]/g, "").split(" ").join("-").toLowerCase() : "";
+
     try {
         connectToDb()
         const newBlog = new Blog({
@@ -32,12 +32,19 @@ export const addBlog = async (formData) => {
 }
 
 export const updateBlog = async (id, formData) => {
-    const { title, content, img, slug } = Object.fromEntries(formData);
+    const { title, content, img } = Object.fromEntries(formData);
+    const slug = typeof title === "string" ? title.replace(/[<>,!?:/&'\\-]/g, "").split(" ").join("-").toLowerCase() : "";
+
     try {
         connectToDb()
-        await Blog.findByIdAndUpdate(id, { title, content, img, slug });
+        const updatedBlog = await Blog.findByIdAndUpdate(id, { title, content, img, slug }, { new: true });
         revalidatePath("/blogs");
-        return;
+        revalidatePath(`/blogs/${slug}`);
+        const plainBlog = {
+            ...updatedBlog.toJSON(),
+            _id: updatedBlog._id.toJSON()
+        }
+        return plainBlog;
     } catch (err) {
         console.log(err)
         throw new Error(err);
