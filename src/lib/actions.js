@@ -44,13 +44,13 @@ export const updateBlog = async (id, formData) => {
     }
 }
 
-export const deleteBlog = async (formData) => {
-    const { id } = Object.fromEntries(formData);
+export const deleteBlog = async (blogId) => {
     try {
         connectToDb()
-        await Blog.findByIdAndDelete(id);
-
-        revalidatePath("/blogs");
+        await Comment.deleteMany({ blogId })
+        await Blog.findByIdAndDelete({ _id: blogId });
+        revalidatePath("/blogs/[slug]");
+        return;
     } catch (err) {
         console.log(err)
         throw new Error(err);
