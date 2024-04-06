@@ -19,3 +19,7 @@ export const connectToDb = async () => {
 export const createMarkup = (content) => {
     return { __html: content };
 }
+
+export const contentWithLineBreak = (content) => {
+    return { __html: content.replace(/\n/g, '<br>') };
+}

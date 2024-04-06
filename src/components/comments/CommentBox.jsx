@@ -1,7 +1,7 @@
 import { getUser } from "@/lib/data";
 import Image from "next/image";
 import EditBtn from "./EditBtn";
-import { createMarkup } from "@/lib/utils";
+import { contentWithLineBreak } from "@/lib/utils";
 import DeleteBtn from "./DeleteBtn";
 
 const CommentBox = async ({ session, comment, poster }) => {
@@ -41,10 +41,10 @@ const CommentBox = async ({ session, comment, poster }) => {
               </p>
             </div>
           </div>
-          <div
+          <p
             className="mb-1 txt-weight-light"
-            dangerouslySetInnerHTML={createMarkup(comment?.content)}
-          ></div>
+            dangerouslySetInnerHTML={contentWithLineBreak(comment?.content)}
+          ></p>
         </div>
         {session?.user.id === comment.userId && (
           <div className="d-flex align-items-center mt-1">
