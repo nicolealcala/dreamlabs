@@ -113,17 +113,29 @@ export const deleteComment = async (id) => {
     }
 }
 
-export const deleteUser = async (formData) => {
-    const { id } = Object.fromEntries(formData);
+export const deleteUser = async (id) => {
     try {
         connectToDb()
+        await Comment.deleteMany({ userId: id })
         await Blog.deleteMany({ userId: id })
         await User.findByIdAndDelete(id);
-
+        //TODO: Kill session of deleted user.
         revalidatePath("/admin");
         revalidatePath("/blogs");
     } catch (err) {
         console.log(err)
+        throw new Error(err);
+    }
+}
+
+export const updateRole = async (id, role) => {
+    try {
+        connectToDb();
+        await User.findByIdAndUpdate(id, { isAdmin: role })
+        revalidatePath("/admin")
+        return;
+    } catch (err) {
+        console.log(err);
         throw new Error(err);
     }
 }
