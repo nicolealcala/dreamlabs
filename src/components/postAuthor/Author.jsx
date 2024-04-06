@@ -1,10 +1,9 @@
 import { getUser } from "@/lib/data";
 import Image from "next/image";
-import { options } from "@/lib/utils";
 
-const Author = async ({ userId, date }) => {
+const Author = async ({ blog }) => {
   // FETCH DATA WITHOUT API
-  const user = await getUser(userId);
+  const user = await getUser(blog?.userId);
 
   return (
     <div className="row mx-0 mt-3 w-100 d-flex align-items-end">
@@ -28,11 +27,14 @@ const Author = async ({ userId, date }) => {
       <div className="col-8 d-flex flex-column justify-content-center">
         <h6 className="txt-weight-mid my-0">{user?.username}</h6>
         <p className="txt-color-soft txt-size-small my-0">
-          {new Date(date).toLocaleDateString("en-US", {
+          {new Date(blog.updatedAt).toLocaleDateString("en-US", {
             month: "long",
             day: "numeric",
             year: "numeric",
           })}
+          {blog.createdAt.getTime() !== blog.updatedAt.getTime() && (
+            <span> (Edited)</span>
+          )}
         </p>
       </div>
     </div>
