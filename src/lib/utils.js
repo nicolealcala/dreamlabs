@@ -27,3 +27,13 @@ export const truncateContent = (content, maxLength) => {
     }
     return content;
 };
+
+export const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    timeZoneName: 'short',
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+}
