@@ -71,19 +71,19 @@ body {
     font-weight: 300;
 }
 
-.txt-size-large {
+.txt-size-lg {
     font-size: 5rem;
 }
 
-.txt-size-mid {
+.txt-size-md {
     font-size: 14px;
 }
 
-.txt-size-small {
+.txt-size-sm {
     font-size: 12px;
 }
 
-.txt-size-xsmall {
+.txt-size-xs {
     font-size: 9px;
 }
 
@@ -244,7 +244,7 @@ body {
         height: 430px;
     }
 
-    .txt-size-large {
+    .txt-size-lg {
         font-size: 4.5rem;
     }
 
@@ -260,13 +260,13 @@ body {
         height: 350px;
     }
 
-    .txt-size-large {
+    .txt-size-lg {
         font-size: 3.8rem;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .txt-size-large {
+    .txt-size-lg {
         font-size: 3.3rem;
     }
 }
