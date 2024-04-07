@@ -1,18 +1,13 @@
 import Image from "next/image";
 import { EllipsisVertical } from "lucide-react";
 import { getUser } from "@/lib/data";
-import { createMarkup, options } from "@/lib/utils";
+import { createMarkup } from "@/lib/utils";
 import DeleteBtn from "./DeleteBtn";
 import EditBtn from "./EditBtn";
+import UpdatedDate from "../date/UpdatedDate";
 
 const CommentBox = async ({ session, comment, poster }) => {
   const user = await getUser(comment?.userId);
-
-  const createdAt = new Date(comment?.createdAt);
-  const updatedAt = new Date(comment?.updatedAt);
-  const formattedUpdatedAt = new Intl.DateTimeFormat("en-US", options).format(
-    updatedAt
-  );
   return (
     <div className="d-flex commentForm mb-3" data-bs-theme="dark">
       <Image
@@ -45,10 +40,9 @@ const CommentBox = async ({ session, comment, poster }) => {
             </div>
             <div className="d-flex align-items-center">
               <p className="txt-size-xs my-0 py-0">
-                {formattedUpdatedAt}
-                {createdAt.getTime() !== updatedAt.getTime() && (
-                  <span> (Edited)</span>
-                )}
+                <UpdatedDate utcDate={comment?.updatedAt} />
+                {comment.createdAt.getTime() !==
+                  comment.updatedAt.getTime() && <span> (Edited)</span>}
               </p>
 
               {session?.user.id === comment.userId && (
