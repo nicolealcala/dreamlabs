@@ -82,7 +82,7 @@ const Toolbar = ({ editor, disable }) => {
       ))}
       <button
         onClick={() => editor.chain().focus().undo().run()}
-        disabled={!editor.can().chain().focus().undo().run()}
+        disabled={!editor.can().chain().focus().undo().run() || disable}
         className={`toolbarBtn ${
           editor.isActive("undo") ? "bg-mid text-light" : "bg-transparent"
         }`}
@@ -91,7 +91,7 @@ const Toolbar = ({ editor, disable }) => {
       </button>
       <button
         onClick={() => editor.chain().focus().redo().run()}
-        disabled={!editor.can().chain().focus().redo().run()}
+        disabled={!editor.can().chain().focus().redo().run() || disable}
         className={`toolbarBtn ${
           editor.isActive("redo") ? "bg-mid text-light" : "bg-transparent"
         }`}

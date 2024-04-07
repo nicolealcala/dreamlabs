@@ -72,7 +72,7 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
       <Form onSubmit={handleSubmit}>
         <Modal.Body>
           <Row className="mx-0">
-            <Form.Group className="col-6 mb-3" controlId="title">
+            <Form.Group className="col-lg-6 mb-3" controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
@@ -82,7 +82,7 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="col-6 mb-3" controlId="img">
+            <Form.Group className="col-lg-6 mb-3" controlId="img">
               <Form.Label>Picture</Form.Label>
               <Form.Control
                 type="text"
