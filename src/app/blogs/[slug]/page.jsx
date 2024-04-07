@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./blog.module.css";
 import Author from "@/components/postAuthor/Author";
 import { Suspense } from "react";
-import { getBlog, getComments, getUser } from "@/lib/data";
+import { getBlog, getComments } from "@/lib/data";
 import NotFound from "@/app/not-found";
 import { createMarkup } from "@/lib/utils";
 import { auth } from "@/lib/auth";
