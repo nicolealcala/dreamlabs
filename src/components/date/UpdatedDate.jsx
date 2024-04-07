@@ -6,10 +6,18 @@ const UpdatedDate = ({ utcDate, options }) => {
 
   useEffect(() => {
     const convertToLocale = () => {
-      const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
-        utcDate
-      );
-      setLocalDate(formattedDate);
+      if (utcDate instanceof Date) {
+        const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+          utcDate
+        );
+        setLocalDate(formattedDate);
+      } else {
+        const date = new Date(utcDate);
+        const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+          date
+        );
+        setLocalDate(formattedDate);
+      }
     };
 
     convertToLocale();
