@@ -12,6 +12,7 @@ const truncateContent = (content, maxLength) => {
 const removeHtmlTags = (str) => {
   return str.replace(/<[^>]*>/g, " ");
 };
+
 const PostCard = ({ item }) => {
   return (
     <div className={styles.card}>
