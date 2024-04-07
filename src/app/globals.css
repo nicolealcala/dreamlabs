@@ -200,17 +200,20 @@ body {
 .contactForm input,
 .contactForm textarea,
 .commentForm input,
-.commentForm textarea,
-.form-control.commentBox {
+.commentForm textarea {
     background-color: rgba(255, 255, 255, 0.1);
 
+}
+
+.form-control.commentBox {
+    background-color: #52426b;
 }
 
 .inputForm input:focus,
 .contactForm input:focus,
 .contactForm textarea:focus,
 .commentForm textarea:focus,
-.commentForm input {
+.commentForm input:focus {
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
