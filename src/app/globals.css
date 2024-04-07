@@ -59,6 +59,10 @@ body {
     color: var(--txt-soft);
 }
 
+.txt-color-yellow {
+    color: #ffeaac;
+}
+
 .txt-weight-mid {
     font-weight: 600;
 }
@@ -84,7 +88,7 @@ body {
 }
 
 .txt-size-xs {
-    font-size: 9px;
+    font-size: 10px;
 }
 
 .btns {
@@ -131,6 +135,10 @@ body {
 
 #github:hover {
     color: var(--bg-mid);
+}
+
+.dropdown-menu {
+    min-width: auto !important;
 }
 
 .link {
@@ -230,8 +238,11 @@ body {
 
 .ProseMirror {
     height: calc(100vh - 500px);
-    /* max-height: calc(100vh - 450px); */
     overflow-y: auto;
+}
+
+#commentProse {
+    height: 100px;
 }
 
 .autoHeight {
