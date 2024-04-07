@@ -48,7 +48,7 @@ const Blogs = async () => {
   }
 
   return (
-    <div className="row mx-0 gx-5 py-5">
+    <div className="row mx-0 gx-5 pt-5 pb-3">
       {session?.user.isAdmin && (
         <AddBtn btnId="addBtn" btnName="+" userId={session?.user.id} />
       )}
