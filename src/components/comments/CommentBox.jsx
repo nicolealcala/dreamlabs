@@ -20,7 +20,7 @@ const CommentBox = async ({ session, comment, poster }) => {
       <div className="d-flex flex-column w-auto ms-2">
         <div className="form-control commentBox border-0 p-0">
           <div
-            className="mb-1 txt-weight-light mb-2 px-3 pt-3"
+            className="mb-1 txt-weight-normal mb-2 px-3 pt-3"
             dangerouslySetInnerHTML={createMarkup(comment?.content)}
           ></div>
           <hr className="my-0" />
