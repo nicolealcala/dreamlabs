@@ -3,11 +3,12 @@ import { githubLogin, login } from "@/lib/actions";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
 const LoginForm = () => {
   const [loginState, setLoginState] = useFormState(login, undefined);
+  const [showPass, setShowPass] = useState(false);
 
   const router = useRouter();
 
@@ -55,7 +56,18 @@ const LoginForm = () => {
               required
             />
           </div>
-
+          <div className="d-flex justify-content-start align-items-center">
+            <input
+              type="checkbox"
+              className="form-check-input my-0 me-2"
+              name="showPass"
+              value={showPass}
+              onChange={() => setShowPass((prev) => !prev)}
+            />
+            <label htmlFor="showPass" className="txt-size-md">
+              Show password
+            </label>
+          </div>
           {loginState?.error && (
             <div className="col-12">
               <p className="border border-danger rounded-3 bg-danger-subtle my-0 p-2">
