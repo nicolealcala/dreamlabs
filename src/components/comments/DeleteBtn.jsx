@@ -1,6 +1,5 @@
 "use client";
 import Swal from "sweetalert2";
-import styles from "./comment.module.css";
 import { deleteComment } from "@/lib/actions";
 const DeleteBtn = ({ commentId }) => {
   const confirmDelete = () => {
@@ -32,8 +31,7 @@ const DeleteBtn = ({ commentId }) => {
 
   return (
     <button
-      className="bg-transparent border-0 txt-size-sm"
-      id={styles.delete}
+      className="bg-transparent border-0 txt-size-md w-100 text-start px-2 text-dark"
       onClick={confirmDelete}
     >
       Delete

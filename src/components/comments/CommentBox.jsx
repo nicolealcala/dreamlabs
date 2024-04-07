@@ -1,8 +1,9 @@
-import { getUser } from "@/lib/data";
 import Image from "next/image";
-import EditBtn from "./EditBtn";
-import { contentWithLineBreak } from "@/lib/utils";
+import { EllipsisVertical } from "lucide-react";
+import { getUser } from "@/lib/data";
+import { createMarkup } from "@/lib/utils";
 import DeleteBtn from "./DeleteBtn";
+import EditBtn from "./EditBtn";
 
 const CommentBox = async ({ session, comment, poster }) => {
   const user = await getUser(comment?.userId);
@@ -16,12 +17,19 @@ const CommentBox = async ({ session, comment, poster }) => {
         alt="Commentor Image"
         className="rounded-pill"
       />
-      <div className="d-flex flex-column w-auto ms-3">
-        <div className="form-control commentBox border-0">
-          <div className="d-flex justify-content-between align-items-center mb-2">
+      <div className="d-flex flex-column w-auto ms-2">
+        <div className="form-control commentBox border-0 p-0">
+          <div
+            className="mb-1 txt-weight-light mb-2 px-3 pt-3"
+            dangerouslySetInnerHTML={createMarkup(comment?.content)}
+          ></div>
+          <hr className="my-0" />
+          <div className="d-flex justify-content-between align-items-center p-2">
             <div className="me-3">
-              <p className="txt-size-md my-0 txt-weight-mid">
-                {user?.username}
+              <p className="txt-size-sm my-0 ">
+                <em className="txt-color-yellow txt-weight-mid">
+                  @{user?.username}
+                </em>
                 {poster === comment.userId && (
                   <span className="txt-weight-normal txt-color-mid txt-size-sm">
                     {" "}
@@ -30,8 +38,8 @@ const CommentBox = async ({ session, comment, poster }) => {
                 )}
               </p>
             </div>
-            <div>
-              <p className="txt-size-sm my-0">
+            <div className="d-flex align-items-center">
+              <p className="txt-size-xs my-0 py-0">
                 {new Date(comment.updatedAt).toLocaleDateString("en-US", {
                   hour: "numeric",
                   minute: "numeric",
@@ -39,19 +47,30 @@ const CommentBox = async ({ session, comment, poster }) => {
                 {comment.createdAt.getTime() !==
                   comment.updatedAt.getTime() && <span> (Edited)</span>}
               </p>
+
+              {session?.user.id === comment.userId && (
+                <div className="dropend" data-bs-theme="light">
+                  <button
+                    className="bg-transparent border-0 btn p-0 ms-1 d-flex align-items-center text-light"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <EllipsisVertical width={15} height={15} />
+                  </button>
+                  <ul className="dropdown-menu">
+                    <li className="dropdown-item p-0">
+                      <EditBtn comment={comment} />
+                    </li>
+                    <li className="dropdown-item p-0">
+                      <DeleteBtn commentId={comment?._id} />
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
-          <p
-            className="mb-1 txt-weight-light"
-            dangerouslySetInnerHTML={contentWithLineBreak(comment?.content)}
-          ></p>
         </div>
-        {session?.user.id === comment.userId && (
-          <div className="d-flex align-items-center mt-1">
-            <EditBtn comment={comment} />
-            <DeleteBtn commentId={comment?._id} />
-          </div>
-        )}
       </div>
     </div>
   );

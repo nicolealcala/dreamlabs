@@ -47,30 +47,30 @@ const BlogPost = async ({ params }) => {
           </div>
         </div>
         <div className={`row mx-0 pt-3 ${styles.content}`}>
-          <div className="col-12">
+          <div className="col-12 p-0">
             <h2>
               <strong>{blog?.title}</strong>
             </h2>
           </div>
-          <div className="col-12 col-lg-6">
+          <div className="col-12 col-lg-6 p-0 mb-3">
             <Suspense fallback={<div>Loading...</div>}>
               <Author blog={blog} />
             </Suspense>
           </div>
           {session?.user.id === blog.userId && (
-            <div className="col-12 col-lg-6 d-flex justify-content-end align-items-center">
+            <div className="col-12 col-lg-6 d-flex justify-content-start justify-content-lg-end align-items-center p-0 mb-3">
               <EditBtn blog={blog} />
               <DeleteBtn blogId={blog?._id} />
             </div>
           )}
           <div
-            className={`col-12 mt-5`}
+            className={`col-12 mt-5 p-0`}
             dangerouslySetInnerHTML={createMarkup(blog?.content)}
           ></div>
         </div>
 
         <hr className="mt-4 mb-0" />
-        <div className="w-100 px-3 rounded-4 mt-4">
+        <div className={`w-100 rounded-4 mt-4 ${styles.commentSection}`}>
           {comments.length === 0 && (
             <div className="col-12 mt-3">This post has no comments yet.</div>
           )}
