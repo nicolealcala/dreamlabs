@@ -20,10 +20,10 @@ const CommentBox = async ({ session, comment, poster }) => {
         <div className="form-control commentBox border-0">
           <div className="d-flex justify-content-between align-items-center mb-2">
             <div className="me-3">
-              <p className="txt-size-mid my-0 txt-weight-mid">
+              <p className="txt-size-md my-0 txt-weight-mid">
                 {user?.username}
                 {poster === comment.userId && (
-                  <span className="txt-weight-normal txt-color-mid txt-size-small">
+                  <span className="txt-weight-normal txt-color-mid txt-size-sm">
                     {" "}
                     &#x2022; Author
                   </span>
@@ -31,7 +31,7 @@ const CommentBox = async ({ session, comment, poster }) => {
               </p>
             </div>
             <div>
-              <p className="txt-size-small my-0">
+              <p className="txt-size-sm my-0">
                 {new Date(comment.updatedAt).toLocaleDateString("en-US", {
                   hour: "numeric",
                   minute: "numeric",

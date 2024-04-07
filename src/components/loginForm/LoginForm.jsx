@@ -23,7 +23,7 @@ const LoginForm = () => {
       <form action={setLoginState}>
         <h2 className="text-center txt-weight-mid mb-3">Sign in</h2>
 
-        <div className="row mx-0 gy-3">
+        <div className="row mx-0" style={{ rowGap: "12px" }}>
           <div className="col-12">
             <label htmlFor="email" className="text-muted required">
               Email
@@ -43,7 +43,7 @@ const LoginForm = () => {
               </label>
               <Link
                 href="/forgot-password"
-                className="txt-color-mid txt-size-mid txt-weight-mid text-decoration-none"
+                className="txt-color-mid txt-size-md txt-weight-mid text-decoration-none"
               >
                 Forgot Password?
               </Link>
@@ -63,7 +63,7 @@ const LoginForm = () => {
               </p>
             </div>
           )}
-          <div className="col-12 my-3">
+          <div className="col-12 mb-3">
             <button
               type="submit"
               className="btn primary-btn w-100 txt-weight-mid py-2"

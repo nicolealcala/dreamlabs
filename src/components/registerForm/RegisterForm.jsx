@@ -38,7 +38,7 @@ const RegisterForm = () => {
             required
           />
           {registrationState?.unError && (
-            <p className="mt-2 mb-0 txt-size-small text-danger">
+            <p className="mt-2 mb-0 txt-size-sm text-danger">
               {registrationState?.unError}
             </p>
           )}
@@ -63,7 +63,6 @@ const RegisterForm = () => {
           <input
             type="password"
             className="form-control border border-secondary"
-            max
             name="password"
             pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_]).{8,}$"
             title="Must be at least 8 characters, including at least one number, one uppercase and lowercase letters, and one special character."
@@ -81,7 +80,7 @@ const RegisterForm = () => {
             required
           />
           {registrationState?.pwError && (
-            <p className="mt-2 mb-0 txt-size-small text-danger">
+            <p className="mt-2 mb-0 txt-size-sm text-danger">
               {registrationState?.pwError}
             </p>
           )}
@@ -97,7 +96,7 @@ const RegisterForm = () => {
     name="img"
     />
    </div> */}
-        <div className="col-12 mt-3">
+        <div className="col-12">
           <button
             type="submit"
             className="btn primary-btn w-100 txt-weight-mid py-2"

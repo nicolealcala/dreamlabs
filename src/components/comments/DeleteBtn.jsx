@@ -32,7 +32,7 @@ const DeleteBtn = ({ commentId }) => {
 
   return (
     <button
-      className="bg-transparent border-0 txt-size-small"
+      className="bg-transparent border-0 txt-size-sm"
       id={styles.delete}
       onClick={confirmDelete}
     >

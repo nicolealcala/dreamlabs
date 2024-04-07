@@ -7,7 +7,7 @@ const EditBtn = ({ comment }) => {
   return (
     <>
       <button
-        className="bg-transparent border-0 txt-size-small me-2"
+        className="bg-transparent border-0 txt-size-sm me-2"
         id={styles.edit}
         onClick={() => setShowModal((m) => !m)}
       >
