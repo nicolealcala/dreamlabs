@@ -83,17 +83,18 @@ export const addComment = async (formData) => {
     }
 }
 
-export const updateComment = async (id, formData) => {
+export const updateComment = async (id, blogId, formData) => {
     const { content } = Object.fromEntries(formData);
     try {
         connectToDb()
+        const blog = await Blog.findById(blogId);
         const comment = await Comment.findByIdAndUpdate(id, { content });
-        revalidatePath("/blogs/[slug]");
+        revalidatePath(`/blogs/${blog.slug}`);
         const plainComment = {
             ...comment.toJSON(),
             _id: comment._id.toJSON()
         }
-        console.log(plainComment);
+        revalidatePath("/blogs/[slug]")
         return plainComment;
     } catch (err) {
         console.log(err)

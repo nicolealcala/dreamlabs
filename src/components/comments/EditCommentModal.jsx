@@ -13,7 +13,7 @@ const EditModal = ({ showModal, setShowModal, comment }) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     try {
-      await updateComment(comment._id, formData);
+      await updateComment(comment._id, comment.blogId, formData);
       Swal.fire({
         title: "Success",
         html: "<em>Your comment has been updated!</em>",
