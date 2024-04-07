@@ -34,6 +34,5 @@ export const options = {
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
-    timeZoneName: 'short',
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
 }

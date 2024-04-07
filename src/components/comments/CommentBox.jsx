@@ -49,8 +49,9 @@ const CommentBox = async ({ session, comment, poster }) => {
             <div className="d-flex align-items-center">
               <p className="txt-size-xs my-0 py-0">
                 {formattedUpdatedAt}
-                {formattedCreatedAt.getTime() !==
-                  formattedUpdatedAt.getTime() && <span> (Edited)</span>}
+                {createdAt.getTime() !== updatedAt.getTime() && (
+                  <span> (Edited)</span>
+                )}
               </p>
 
               {session?.user.id === comment.userId && (
