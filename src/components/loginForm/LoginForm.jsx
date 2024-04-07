@@ -60,7 +60,7 @@ const LoginForm = () => {
             <input
               type="checkbox"
               className="form-check-input my-0 me-2"
-              name="showPass"
+              id="showPass"
               value={showPass}
               onChange={() => setShowPass((prev) => !prev)}
             />

@@ -26,7 +26,7 @@
     padding: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
 
     .body {
         padding-inline: 0;
@@ -41,6 +41,12 @@
     }
 
     .blogCol {
-        padding-inline: 0;
+        padding-inline: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blogCol {
+        padding-inline: 5px;
     }
 }
