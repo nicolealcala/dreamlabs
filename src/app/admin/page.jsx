@@ -1,5 +1,5 @@
-import PostTable from "@/components/adminControls/PostTable";
-import UserTable from "@/components/adminControls/UserTable";
+import PostTable from "@/components/adminControls/PostsTable";
+import UserTable from "@/components/adminControls/UsersTable";
 import { auth } from "@/lib/auth";
 import { getUsers, getBlogs } from "@/lib/data";
 
