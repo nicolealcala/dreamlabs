@@ -14,6 +14,10 @@
     position: relative;
 }
 
+.commentSection {
+    padding-inline: 30px;
+}
+
 .content {
     padding: 20px;
 }
@@ -26,5 +30,9 @@
 
     .content {
         padding: 5px;
+    }
+
+    .commentSection {
+        padding-inline: 10px;
     }
 }
