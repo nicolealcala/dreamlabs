@@ -2,7 +2,7 @@
 import { register } from "@/lib/actions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
 const RegisterForm = () => {
@@ -10,6 +10,8 @@ const RegisterForm = () => {
     register,
     undefined
   );
+  const [type, setType] = useState("password");
+  const [disabled, setDisabled] = useState(true);
 
   const router = useRouter();
 
@@ -66,6 +68,7 @@ const RegisterForm = () => {
             name="password"
             pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_]).{8,}$"
             title="Must be at least 8 characters, including at least one number, one uppercase and lowercase letters, and one special character."
+            onChange={setDisabled((d) => !d)}
             required
           />
         </div>
@@ -96,6 +99,14 @@ const RegisterForm = () => {
     name="img"
     />
    </div> */}
+        <div className="d-flex">
+          <input
+            type="checkbox"
+            className="form-check-input me-2"
+            name="showPass"
+          />{" "}
+          <label htmlFor="showPass">Show password</label>
+        </div>
         <div className="col-12">
           <button
             type="submit"
