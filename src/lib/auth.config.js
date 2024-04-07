@@ -27,11 +27,11 @@ export const authConfig = {
 
             const onAdminPage = request.nextUrl?.pathname.startsWith("/admin");
             const onBlogPage = request.nextUrl?.pathname.startsWith("/blogs");
-            const onLoginPage = request.nextUrl?.pathname.startsWith("/login");
+            const onLoginRegister = request.nextUrl?.pathname.startsWith("/login") || request.nextUrl?.pathname.startsWith("/register");
 
             if (onAdminPage && !user.isAdmin) return false;
             if (onBlogPage && !user) return false;
-            if (onLoginPage && user) return Response.redirect(new URL("/", request.nextUrl));
+            if (onLoginRegister && user) return Response.redirect(new URL("/", request.nextUrl));
             return true;
         }
     }
