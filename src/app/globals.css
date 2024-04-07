@@ -139,7 +139,7 @@ body {
 }
 
 .dropdown-menu {
-    min-width: auto !important;
+    min-width: 100px !important;
 }
 
 .link {

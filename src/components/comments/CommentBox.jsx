@@ -46,7 +46,7 @@ const CommentBox = async ({ session, comment, poster }) => {
               </p>
 
               {session?.user.id === comment.userId && (
-                <div className="dropend" data-bs-theme="light">
+                <div className="dropup" data-bs-theme="light">
                   <button
                     className="bg-transparent border-0 btn p-0 ms-1 d-flex align-items-center text-light"
                     type="button"
