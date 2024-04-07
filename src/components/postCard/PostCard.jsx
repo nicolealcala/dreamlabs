@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./postcard.module.css";
-import { truncateContent } from "@/lib/utils";
+import { truncateContent, optionsWithoutTime } from "@/lib/utils";
+import UpdatedDate from "../date/UpdatedDate";
 
 const removeHtmlTags = (str) => {
   return str.replace(/<[^>]*>/g, " ");
@@ -21,11 +22,7 @@ const PostCard = ({ item }) => {
       </div>
       <div>
         <span className={styles.date}>
-          {new Date(item.updatedAt).toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}
+          <UpdatedDate utcDate={item?.updatedAt} options={optionsWithoutTime} />
         </span>
         <h6 className={styles.title} title={item?.title}>
           {truncateContent(item?.title, 45)}

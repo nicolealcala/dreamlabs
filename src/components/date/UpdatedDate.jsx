@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { options } from "@/lib/utils";
 
-const UpdatedDate = ({ utcDate }) => {
+const UpdatedDate = ({ utcDate, options }) => {
   const [localDate, setLocalDate] = useState(null);
 
   useEffect(() => {

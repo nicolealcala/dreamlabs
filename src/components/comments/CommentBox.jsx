@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { EllipsisVertical } from "lucide-react";
 import { getUser } from "@/lib/data";
-import { createMarkup } from "@/lib/utils";
+import { createMarkup, optionsWithTime } from "@/lib/utils";
 import DeleteBtn from "./DeleteBtn";
 import EditBtn from "./EditBtn";
 import UpdatedDate from "../date/UpdatedDate";
@@ -40,7 +40,10 @@ const CommentBox = async ({ session, comment, poster }) => {
             </div>
             <div className="d-flex align-items-center">
               <p className="txt-size-xs my-0 py-0">
-                <UpdatedDate utcDate={comment?.updatedAt} />
+                <UpdatedDate
+                  utcDate={comment?.updatedAt}
+                  options={optionsWithTime}
+                />
                 {comment.createdAt.getTime() !==
                   comment.updatedAt.getTime() && <span> (Edited)</span>}
               </p>
