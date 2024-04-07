@@ -22,7 +22,7 @@ const PostCard = ({ item }) => {
       </div>
       <div>
         <span className={styles.date}>
-          <UpdatedDate utcDate={item?.updatedAt} options={optionsWithoutTime} />
+          <UpdatedDate utcDate={item?.updatedAt} options="date" />
         </span>
         <h6 className={styles.title} title={item?.title}>
           {truncateContent(item?.title, 45)}

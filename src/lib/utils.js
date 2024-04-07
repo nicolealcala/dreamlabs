@@ -28,18 +28,3 @@ export const truncateContent = (content, maxLength) => {
     return content;
 };
 
-export const optionsWithTime = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-}
-
-export const optionsWithoutTime = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-}

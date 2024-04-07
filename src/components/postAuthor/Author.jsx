@@ -1,5 +1,5 @@
 import { getUser } from "@/lib/data";
-import { truncateContent, optionsWithTime } from "@/lib/utils";
+import { truncateContent } from "@/lib/utils";
 import Image from "next/image";
 import UpdatedDate from "../date/UpdatedDate";
 
@@ -31,7 +31,7 @@ const Author = async ({ blog }) => {
           {truncateContent(user?.username, 20)}
         </h6>
         <p className="txt-color-soft txt-size-sm my-0">
-          <UpdatedDate utcDate={blog?.updatedAt} options={optionsWithTime} />
+          <UpdatedDate utcDate={blog?.updatedAt} options="datetime" />
           {blog?.createdAt.getTime() !== blog?.updatedAt.getTime() && (
             <span> (Edited)</span>
           )}
