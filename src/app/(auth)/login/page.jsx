@@ -1,4 +1,4 @@
-import LoginForm from "@/components/loginForm/loginForm";
+import LoginForm from "@/components/loginForm/LoginForm";
 
 const Login = async () => {
   return <LoginForm />;
