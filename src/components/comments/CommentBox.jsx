@@ -10,9 +10,6 @@ const CommentBox = async ({ session, comment, poster }) => {
 
   const createdAt = new Date(comment?.createdAt);
   const updatedAt = new Date(comment?.updatedAt);
-  const formattedCreatedAt = new Intl.DateTimeFormat("en-US", options).format(
-    createdAt
-  );
   const formattedUpdatedAt = new Intl.DateTimeFormat("en-US", options).format(
     updatedAt
   );

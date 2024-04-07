@@ -1,11 +1,16 @@
 import { getUser } from "@/lib/data";
-import { truncateContent } from "@/lib/utils";
+import { truncateContent, options } from "@/lib/utils";
 import Image from "next/image";
 
 const Author = async ({ blog }) => {
   // FETCH DATA WITHOUT API
   const user = await getUser(blog?.userId);
 
+  const createdAt = new Date(blog?.createdAt);
+  const updatedAt = new Date(blog?.updatedAt);
+  const formattedUpdatedAt = new Intl.DateTimeFormat("en-US", options).format(
+    updatedAt
+  );
   return (
     <div className="row mx-0 mt-3 w-100 d-flex align-items-end">
       <div
@@ -30,12 +35,8 @@ const Author = async ({ blog }) => {
           {truncateContent(user?.username, 20)}
         </h6>
         <p className="txt-color-soft txt-size-sm my-0">
-          {new Date(blog.updatedAt).toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}
-          {blog.createdAt.getTime() !== blog.updatedAt.getTime() && (
+          {formattedUpdatedAt}
+          {createdAt.getTime() !== updatedAt.getTime() && (
             <span> (Edited)</span>
           )}
         </p>
