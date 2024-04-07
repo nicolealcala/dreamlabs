@@ -83,6 +83,10 @@ body {
     font-size: 12px;
 }
 
+.txt-size-xsmall {
+    font-size: 9px;
+}
+
 .btns {
     /* border-radius: 10px;
     padding: 10px 15px;
