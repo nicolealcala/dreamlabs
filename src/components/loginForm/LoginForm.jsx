@@ -50,7 +50,7 @@ const LoginForm = () => {
               </Link>
             </div>
             <input
-              type="password"
+              type={showPass ? "text" : "password"}
               className="form-control border border-secondary"
               name="password"
               required
