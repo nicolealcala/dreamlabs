@@ -6,7 +6,7 @@ const Home = () => {
     <div className="row mx-0 py-5">
       <div className="col-lg-6 d-flex flex-column justify-content-center align-items-start gap-3">
         <h1>
-          <strong className="txt-size-large">Your Idea in Motion.</strong>
+          <strong className="txt-size-lg">Your Idea in Motion.</strong>
         </h1>
         <p style={{ width: "90%" }}>
           Where Creativity Meets Community! Join us on a journey of inspiration
