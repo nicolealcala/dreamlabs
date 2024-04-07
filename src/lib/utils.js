@@ -20,3 +20,10 @@ export const createMarkup = (content) => {
     const plainContent = content.replace(/\n/g, '<br>')
     return { __html: plainContent };
 }
+
+export const truncateContent = (content, maxLength) => {
+    if (content.length > maxLength) {
+        return content.slice(0, maxLength) + "...";
+    }
+    return content;
+};

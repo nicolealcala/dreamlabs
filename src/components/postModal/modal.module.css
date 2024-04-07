@@ -48,6 +48,14 @@
     padding: 20px;
 }
 
+#addBtnLg {
+    background-color: white;
+}
+
+#addBtnLg:hover {
+    color: var(--txt-soft)
+}
+
 #addBtn {
     position: fixed;
     bottom: 10%;

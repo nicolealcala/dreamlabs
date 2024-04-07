@@ -1,0 +1,23 @@
+#backToTop {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    width: 55px;
+    height: 55px;
+    background-color: var(--yellow) !important;
+    border-radius: 50%;
+    line-height: 1px;
+    color: var(--bg-dark);
+    font-size: 2rem;
+    font-family: "Nunito";
+    box-shadow: 0 3px 8px rgba(17, 6, 22, 0.2);
+    z-index: 3;
+    transition: 0.2s ease-in;
+}
+
+@media screen and (max-width: 768px) {
+    #backToTop {
+        bottom: 5%;
+        right: 5%;
+    }
+}

@@ -114,7 +114,8 @@ const UserTable = ({ users, session }) => {
                     Delete
                   </Button>
                   <Button
-                    variant="primary"
+                    variant="none"
+                    className="bg-violet"
                     disabled={session.user.id === user._id}
                     onClick={() => changeRole(user)}
                   >

@@ -8,7 +8,7 @@ const AddBtn = ({ btnId, btnName, userId }) => {
   return (
     <>
       <button
-        className="btn bg-light border-0 py-2"
+        className="btn border-0 py-2"
         id={btnId ? styles[btnId] : ""}
         onClick={() => setShowModal(true)}
       >

@@ -10,6 +10,8 @@ import CommentForm from "@/components/comments/commentForm";
 import CommentBox from "@/components/comments/commentBox";
 import DeleteBtn from "@/components/blogControls/DeleteBtn";
 import EditBtn from "@/components/blogControls/EditBtn";
+import BackToTop from "@/components/backtotop/BackToTop";
+import Loader from "@/components/loader/Loader";
 
 //Next.js only fetch data once even if its called by multiple functions (generateMetaData)
 export const dynamicMetadata = async ({ params }) => {
@@ -52,19 +54,20 @@ const BlogPost = async ({ params }) => {
               <strong>{blog?.title}</strong>
             </h2>
           </div>
-          <div className="col-12 col-lg-6 p-0 mb-3">
-            <Suspense fallback={<div>Loading...</div>}>
+          <div className="col-6 p-0 mb-3">
+            <Suspense fallback={<Loader />}>
               <Author blog={blog} />
             </Suspense>
           </div>
           {session?.user.id === blog.userId && (
-            <div className="col-12 col-lg-6 d-flex justify-content-start justify-content-lg-end align-items-center p-0 mb-3">
+            <div className="col-6 d-flex justify-content-end align-items-end p-0 mb-3">
               <EditBtn blog={blog} />
               <DeleteBtn blogId={blog?._id} />
             </div>
           )}
+          <hr />
           <div
-            className={`col-12 mt-5 p-0`}
+            className={`col-12 mt-4 p-0`}
             dangerouslySetInnerHTML={createMarkup(blog?.content)}
           ></div>
         </div>
@@ -97,6 +100,7 @@ const BlogPost = async ({ params }) => {
           )}
         </div>
       </div>
+      <BackToTop />
     </div>
   );
 };

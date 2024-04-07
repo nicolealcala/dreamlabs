@@ -7,7 +7,7 @@ const EditBtn = ({ blog }) => {
   return (
     <>
       <button
-        className="btn btn-secondary me-2"
+        className="btn bg-violet me-2"
         onClick={() => setShowModal((m) => !m)}
       >
         Edit

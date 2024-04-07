@@ -1,13 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./postcard.module.css";
-
-const truncateContent = (content, maxLength) => {
-  if (content.length > maxLength) {
-    return content.slice(0, maxLength) + "...";
-  }
-  return content;
-};
+import { truncateContent } from "@/lib/utils";
 
 const removeHtmlTags = (str) => {
   return str.replace(/<[^>]*>/g, " ");
@@ -34,10 +28,10 @@ const PostCard = ({ item }) => {
           })}
         </span>
         <h6 className={styles.title} title={item?.title}>
-          {truncateContent(item?.title, 50)}
+          {truncateContent(item?.title, 45)}
         </h6>
         <p className={styles.desc}>
-          {truncateContent(removeHtmlTags(item.content), 80)}
+          {truncateContent(removeHtmlTags(item.content), 70)}
         </p>
         <Link href={`/blogs/${item?.slug}`} className="link">
           READ MORE

@@ -6,6 +6,7 @@
     --txt-light: #DEE2E6;
     --txt-soft: #AEAEAE;
     --yellow: #FFC107;
+    --blue: #7066E0;
 }
 
 * {
@@ -226,6 +227,15 @@ body {
 
 .bg-mid {
     background-color: var(--bg-mid);
+}
+
+.bg-violet {
+    background-color: var(--blue) !important;
+    color: white !important;
+}
+
+.bg-violet:hover {
+    background-color: #635ac8 !important;
 }
 
 .toolbarIcon {

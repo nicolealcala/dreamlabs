@@ -1,3 +1,4 @@
+import BackToTop from "@/components/backtotop/BackToTop";
 import PostCard from "@/components/postCard/PostCard";
 import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
@@ -48,9 +49,15 @@ const Blogs = async () => {
   }
 
   return (
-    <div className="row mx-0 gx-5 pt-5 pb-3">
+    <div className="row mx-0 gx-5 p-3">
       {session?.user.isAdmin && (
-        <AddBtn btnId="addBtn" btnName="+" userId={session?.user.id} />
+        <div className="col-12 text-end px-0 pb-3">
+          <AddBtn
+            btnId="addBtnLg"
+            btnName="+ Add blog"
+            userId={session?.user.id}
+          />
+        </div>
       )}
 
       {blogs.map((blog) => (
@@ -58,6 +65,8 @@ const Blogs = async () => {
           <PostCard item={blog} />
         </div>
       ))}
+
+      <BackToTop />
     </div>
   );
 };

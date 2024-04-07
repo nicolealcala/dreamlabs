@@ -76,7 +76,6 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter title"
                 value={title}
                 name="title"
                 onChange={(e) => setTitle(e.target.value)}
@@ -86,10 +85,11 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
               <Form.Label>Picture</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter picture URL"
+                // placeholder="Enter picture URL"
                 value={img}
                 name="img"
                 onChange={(e) => setImg(e.target.value)}
+                disabled
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="content">

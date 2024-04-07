@@ -1,4 +1,5 @@
 import { getUser } from "@/lib/data";
+import { truncateContent } from "@/lib/utils";
 import Image from "next/image";
 
 const Author = async ({ blog }) => {
@@ -25,7 +26,9 @@ const Author = async ({ blog }) => {
         />
       </div>
       <div className="d-flex w-auto flex-column justify-content-center">
-        <h6 className="txt-weight-mid my-0">{user?.username}</h6>
+        <h6 className="txt-weight-mid my-0">
+          {truncateContent(user?.username, 20)}
+        </h6>
         <p className="txt-color-soft txt-size-sm my-0">
           {new Date(blog.updatedAt).toLocaleDateString("en-US", {
             month: "long",
