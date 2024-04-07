@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./blog.module.css";
+import styles from "../blog.module.css";
 import Author from "@/components/postAuthor/Author";
 import { Suspense } from "react";
 import { getBlog, getComments } from "@/lib/data";
@@ -54,13 +54,13 @@ const BlogPost = async ({ params }) => {
               <strong>{blog?.title}</strong>
             </h2>
           </div>
-          <div className="col-6 p-0 mb-3">
+          <div className="col-md-6 p-0 mb-3">
             <Suspense fallback={<Loader />}>
               <Author blog={blog} />
             </Suspense>
           </div>
           {session?.user.id === blog.userId && (
-            <div className="col-6 d-flex justify-content-end align-items-end p-0 mb-3">
+            <div className="col-md-6 d-flex justify-content-start justify-content-md-end align-items-end p-0 mb-3">
               <EditBtn blog={blog} />
               <DeleteBtn blogId={blog?._id} />
             </div>

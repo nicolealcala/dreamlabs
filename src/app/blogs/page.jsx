@@ -3,6 +3,7 @@ import PostCard from "@/components/postCard/PostCard";
 import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
 import { getBlogs } from "@/lib/data";
+import styles from "./blog.module.css";
 
 // FETCH DATA WITH AN API
 // const getPosts = async () => {
@@ -49,7 +50,7 @@ const Blogs = async () => {
   }
 
   return (
-    <div className="row mx-0 gx-5 p-3">
+    <div className="row mx-0 p-3">
       {session?.user.isAdmin && (
         <div className="col-12 text-end px-0 pb-3">
           <AddBtn
@@ -61,7 +62,10 @@ const Blogs = async () => {
       )}
 
       {blogs.map((blog) => (
-        <div className="col-md-6 col-lg-4 mb-4" key={blog._id}>
+        <div
+          className={`col-md-6 col-lg-4 mb-4 ${styles.blogCol}`}
+          key={blog._id}
+        >
           <PostCard item={blog} />
         </div>
       ))}

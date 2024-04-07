@@ -1,3 +1,7 @@
+.blogCol {
+    padding-inline: 30px;
+}
+
 .body {
     padding-inline: 130px;
 }
@@ -34,5 +38,9 @@
 
     .commentSection {
         padding-inline: 10px;
+    }
+
+    .blogCol {
+        padding-inline: 0;
     }
 }

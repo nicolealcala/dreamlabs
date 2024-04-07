@@ -48,7 +48,7 @@ const Contact = () => {
               <label htmlFor="contact">Phone Number (optional)</label>
               <input
                 type="tel"
-                maxLength={11}
+                minLength={11}
                 className="form-control border border-secondary text-light"
                 placeholder="09XXXXXXXXX"
                 name="contact"
@@ -75,7 +75,7 @@ const Contact = () => {
               ></textarea>
             </div>
             <div className="col-12 my-2">
-              <button type="submit" className="btns primary-btn">
+              <button type="submit" className="btn primary-btn">
                 Send message
               </button>
             </div>
