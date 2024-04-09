@@ -1,6 +1,5 @@
 "use client";
 import { deleteBlog } from "@/lib/actions";
-import Image from "next/image";
 import { Button, Table } from "react-bootstrap";
 import Swal from "sweetalert2";
 

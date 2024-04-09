@@ -56,7 +56,7 @@ const UpdatedDate = ({ utcDate, options }) => {
     };
 
     convertToLocale();
-  }, [utcDate, options]);
+  }, [utcDate, options, optionsWithTime, optionsWithoutTime]);
 
   return <span>{localDate}</span>;
 };

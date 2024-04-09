@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./postcard.module.css";
-import { truncateContent, optionsWithoutTime } from "@/lib/utils";
+import { truncateContent } from "@/lib/utils";
 import UpdatedDate from "../date/UpdatedDate";
 
 const removeHtmlTags = (str) => {
