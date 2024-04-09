@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
+import Loader from "@/components/loader/Loader";
 
 const Home = () => {
   return (
@@ -24,13 +26,15 @@ const Home = () => {
           </Link>
         </div>
         <div className="col-11 brandsContainer my-3">
-          <Image
-            src="/brands.png"
-            alt="Brands"
-            fill
-            sizes="100vw"
-            className="brands img-contain"
-          />
+          <Suspense fallback={<Loader />}>
+            <Image
+              src="/brands.png"
+              alt="Brands"
+              fill
+              sizes="100vw"
+              className="brands img-contain"
+            />
+          </Suspense>
         </div>
       </div>
       <div className="col-lg-6 d-none d-lg-flex justify-content-center align-items-center">
