@@ -3,7 +3,8 @@ import PostCard from "@/components/postCard/PostCard";
 import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
 import { getBlogs } from "@/lib/data";
-import styles from "./blog.module.css";
+import { Suspense } from "react";
+import Skeleton from "@/components/postCard/Skeleton";
 
 // FETCH DATA WITH AN API
 // const getPosts = async () => {
@@ -62,11 +63,10 @@ const Blogs = async () => {
       )}
 
       {blogs.map((blog) => (
-        <div
-          className={`col-md-6 col-lg-4 mb-4 ${styles.blogCol}`}
-          key={blog._id}
-        >
-          <PostCard item={blog} />
+        <div className={`col-md-6 col-lg-4 mb-4 blogCol`} key={blog._id}>
+          <Suspense fallback={<Skeleton />}>
+            <PostCard blog={blog} />
+          </Suspense>
         </div>
       ))}
 
