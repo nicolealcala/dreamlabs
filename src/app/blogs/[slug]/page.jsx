@@ -12,6 +12,7 @@ import DeleteBtn from "@/components/blogControls/DeleteBtn";
 import EditBtn from "@/components/blogControls/EditBtn";
 import BackToTop from "@/components/backtotop/BackToTop";
 import Loader from "@/components/loader/Loader";
+import Skeleton from "@/components/comments/Skeleton";
 
 //Next.js only fetch data once even if its called by multiple functions (generateMetaData)
 export const dynamicMetadata = async ({ params }) => {
@@ -88,12 +89,14 @@ const BlogPost = async ({ params }) => {
               </div>
               {comments.map((comment) => (
                 <>
-                  <CommentBox
-                    session={session}
-                    comment={comment}
-                    poster={blog.userId}
-                    key={comment._id}
-                  />
+                  <Suspense fallback={<Skeleton />}>
+                    <CommentBox
+                      session={session}
+                      comment={comment}
+                      poster={blog.userId}
+                      key={comment._id}
+                    />
+                  </Suspense>
                 </>
               ))}
             </>
