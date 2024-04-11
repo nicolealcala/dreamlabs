@@ -65,6 +65,7 @@ export const {
                     user.isAdmin = exist.isAdmin;
                     user.username = exist.username;
                 } catch (error) {
+                    console.log(error);
                     return false
                 }
             }
