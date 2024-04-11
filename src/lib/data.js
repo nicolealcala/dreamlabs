@@ -4,6 +4,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 
 export const getBlogs = async () => {
+    noStore();
     try {
         connectToDb();
         const blogs = await Blog.find({});
@@ -22,6 +23,7 @@ export const getBlogs = async () => {
 }
 
 export const getBlog = async (slug) => {
+    noStore();
     try {
         connectToDb();
         const blog = await Blog.findOne({ slug });
@@ -67,6 +69,7 @@ export const getUser = async (userId) => {
 }
 
 export const getUsers = async () => {
+    noStore();
     try {
         connectToDb();
         const users = await User.find();
