@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ContactImg from "../../../public/contact.png";
 
 export const metadata = {
   title: "Contact",
@@ -11,9 +12,10 @@ const Contact = () => {
         <div className="img-container">
           <a href="https://storyset.com/business" target="_blank">
             <Image
-              src="/contact.png"
+              src={ContactImg}
               alt="About Image"
               fill
+              placeholder="blur"
               sizes="100vw"
               className="img-contain"
             />
