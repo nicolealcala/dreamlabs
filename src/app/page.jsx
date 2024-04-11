@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import HomeImg from "../../public/home.png";
+import BrandsImg from "../../public/brands.png";
 
 const Home = () => {
   return (
@@ -25,10 +27,11 @@ const Home = () => {
         </div>
         <div className="col-11 brandsContainer my-3">
           <Image
-            src="/brands.png"
+            src={BrandsImg}
             alt="Brands"
             fill
             sizes="100vw"
+            placeholder="blur"
             className="brands img-contain"
           />
         </div>
@@ -37,7 +40,7 @@ const Home = () => {
         <a href="https://storyset.com/people" target="_blank">
           <div className="img-container">
             <Image
-              src="/home.png"
+              src={HomeImg}
               alt="Home-Img"
               fill
               sizes="100vw"
