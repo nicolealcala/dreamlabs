@@ -53,17 +53,17 @@ export const {
                     const exist = await User.findOne({ email: profile.email })
 
                     if (!exist) {
-                        const newUser = new User({
+                        user = new User({
                             username: profile.login,
                             email: profile.email,
                             img: profile.avatar_url,
                         })
 
-                        await newUser.save();
+                        await user.save();
                     }
-                    // user.id = exist.id;
-                    // user.isAdmin = exist.isAdmin;
-                    // user.username = exist.username;
+                    user.id = exist.id;
+                    user.isAdmin = exist.isAdmin;
+                    user.username = exist.username;
                 } catch (error) {
                     console.log(error);
                     return false
