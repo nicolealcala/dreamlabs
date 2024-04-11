@@ -1,24 +1,30 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const UpdatedDate = ({ utcDate, options }) => {
   const [localDate, setLocalDate] = useState(null);
 
-  const optionsWithTime = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-  };
+  const optionsWithTime = useMemo(
+    () => ({
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    }),
+    []
+  );
 
-  const optionsWithoutTime = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-  };
+  const optionsWithoutTime = useMemo(
+    () => ({
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    }),
+    []
+  );
 
   useEffect(() => {
     const convertToLocale = () => {
