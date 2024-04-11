@@ -44,6 +44,7 @@ export const {
             }
         })
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async signIn({ user, account, profile }) {
             if (account.provider === 'github') {
