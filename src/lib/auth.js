@@ -44,6 +44,7 @@ export const {
             }
         })
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async signIn({ user, account, profile }) {
             if (account.provider === 'github') {
@@ -60,10 +61,9 @@ export const {
 
                         await newUser.save();
                     }
-                    user.id = exist.id;
-                    user.isAdmin = exist.isAdmin;
-                    user.username = exist.username;
+
                 } catch (error) {
+                    console.log(error);
                     return false
                 }
             }

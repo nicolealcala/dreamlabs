@@ -4,7 +4,7 @@ import Author from "@/components/postAuthor/Author";
 import { Suspense } from "react";
 import { getBlog, getComments } from "@/lib/data";
 import NotFound from "@/app/not-found";
-import { createMarkup } from "@/lib/utils";
+import { createMarkup, getBase64 } from "@/lib/utils";
 import { auth } from "@/lib/auth";
 import CommentForm from "@/components/comments/CommentForm";
 import CommentBox from "@/components/comments/CommentBox";

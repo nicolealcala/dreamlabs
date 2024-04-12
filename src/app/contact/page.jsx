@@ -15,6 +15,7 @@ const Contact = () => {
               src={ContactImg}
               alt="About Image"
               fill
+              placeholder="blur"
               sizes="100vw"
               placeholder="blur"
               className="img-contain"

@@ -31,3 +31,5 @@ export const truncateContent = (content, maxLength) => {
     return content;
 };
 
+
+

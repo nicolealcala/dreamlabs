@@ -8,12 +8,12 @@ const removeHtmlTags = (str) => {
   return str.replace(/<[^>]*>/g, " ");
 };
 
-const PostCard = ({ item }) => {
+const PostCard = async ({ blog }) => {
   return (
     <div className={styles.card}>
       <div className={styles.imgContainer}>
         <Image
-          src={item?.img}
+          src={blog?.img}
           alt="Post-Img"
           fill
           sizes="100vw"
@@ -22,15 +22,15 @@ const PostCard = ({ item }) => {
       </div>
       <div>
         <span className={styles.date}>
-          <UpdatedDate utcDate={item?.updatedAt} options="date" />
+          <UpdatedDate utcDate={blog?.updatedAt} options="date" />
         </span>
-        <h6 className={styles.title} title={item?.title}>
-          {truncateContent(item?.title, 45)}
+        <h6 className={styles.title} title={blog?.title}>
+          {truncateContent(blog?.title, 45)}
         </h6>
         <p className={styles.desc}>
-          {truncateContent(removeHtmlTags(item.content), 70)}
+          {truncateContent(removeHtmlTags(blog.content), 70)}
         </p>
-        <Link href={`/blogs/${item?.slug}`} className="link">
+        <Link href={`/blogs/${blog?.slug}`} className="link">
           READ MORE
         </Link>
       </div>
