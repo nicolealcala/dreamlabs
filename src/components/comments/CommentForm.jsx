@@ -5,12 +5,16 @@ import { useState } from "react";
 
 const CommentForm = ({ session, blogId }) => {
   const [content, setContent] = useState("");
+  const [isCommenting, setIsCommenting] = useState(false);
+
   const handleAddComment = async (e) => {
     e.preventDefault();
+    setIsCommenting(true);
     const formData = new FormData(e.target);
     try {
       await addComment(formData);
       setContent("");
+      setIsCommenting(false);
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +46,12 @@ const CommentForm = ({ session, blogId }) => {
         ></textarea>
         <input type="hidden" name="userId" value={session?.user.id} />
         <input type="hidden" name="blogId" value={blogId} />
-        <button type="submit" className="btn primary-btn mt-2">
-          Comment
+        <button
+          type="submit"
+          className="btn primary-btn mt-2"
+          disabled={isCommenting}
+        >
+          {isCommenting ? "Commenting..." : "Comment"}
         </button>
       </div>
     </form>

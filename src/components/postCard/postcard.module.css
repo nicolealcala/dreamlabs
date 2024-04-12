@@ -29,3 +29,20 @@
     color: var(--txt-soft);
     white-space: pre-line;
 }
+
+.skeletonTitle,
+.skeletonDesc {
+    height: 60px;
+    width: 95%;
+    margin-bottom: 15px;
+}
+
+.skeletonDesc {
+    height: 20px;
+    margin-bottom: 0;
+}
+
+.skeletonLink {
+    width: 100px;
+    margin-top: 20px;
+}

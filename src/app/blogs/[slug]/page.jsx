@@ -11,7 +11,8 @@ import CommentBox from "@/components/comments/CommentBox";
 import DeleteBtn from "@/components/blogControls/DeleteBtn";
 import EditBtn from "@/components/blogControls/EditBtn";
 import BackToTop from "@/components/backtotop/BackToTop";
-import Loader from "@/components/loader/Loader";
+import CommentsSkeleton from "@/components/comments/Skeleton";
+import AuthorSkeleton from "@/components/postAuthor/Skeleton";
 
 //Next.js only fetch data once even if its called by multiple functions (generateMetaData)
 export const dynamicMetadata = async ({ params }) => {
@@ -55,7 +56,7 @@ const BlogPost = async ({ params }) => {
             </h2>
           </div>
           <div className="col-md-6 p-0 mb-3">
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<AuthorSkeleton />}>
               <Author blog={blog} />
             </Suspense>
           </div>
@@ -88,12 +89,14 @@ const BlogPost = async ({ params }) => {
               </div>
               {comments.map((comment) => (
                 <>
-                  <CommentBox
-                    session={session}
-                    comment={comment}
-                    poster={blog.userId}
-                    key={comment._id}
-                  />
+                  <Suspense fallback={<CommentsSkeleton />}>
+                    <CommentBox
+                      session={session}
+                      comment={comment}
+                      poster={blog.userId}
+                      key={comment._id}
+                    />
+                  </Suspense>
                 </>
               ))}
             </>

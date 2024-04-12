@@ -17,6 +17,9 @@ export const connectToDb = async () => {
 };
 
 export const createMarkup = (content) => {
+    if (!content.includes('<p>') && !content.includes('</p>')) {
+        content = `<p>${content}</p>`;
+    }
     const plainContent = content.replace(/\n/g, '<br>')
     return { __html: plainContent };
 }
