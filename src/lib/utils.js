@@ -31,21 +31,5 @@ export const truncateContent = (content, maxLength) => {
     return content;
 };
 
-// export const getBase64 = async (imgUrl) => {
-//     try {
-//         const res = await fetch(imgUrl);
 
-//         if (!res.ok) {
-//             throw new Error("Failed to fetch image.");
-//         }
-
-//         const buffer = await res.arrayBuffer();
-
-//         const { base64 } = await getPlaiceholder(Buffer.from(buffer));
-//         console.log("base64: ", base64);
-//         return base64;
-//     } catch (err) {
-//         if (err instanceof Error) console.log(err.stack);
-//     }
-// }
 

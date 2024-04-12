@@ -35,7 +35,6 @@ const BlogPost = async ({ params }) => {
   if (!blog) return <NotFound />;
 
   const comments = await getComments(blog._id);
-  // const base64Url = await getBase64(blog.img);
 
   return (
     <div className={`row mx-0 pb-5 ${styles.body}`}>
@@ -46,8 +45,6 @@ const BlogPost = async ({ params }) => {
               src={blog?.img}
               alt="Post Image"
               fill
-              // placeholder="blur"
-              // blurDataURL={base64Url}
               className="img-cover"
             />
           </div>

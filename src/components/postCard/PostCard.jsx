@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./postcard.module.css";
-import { getBase64, truncateContent } from "@/lib/utils";
+import { truncateContent } from "@/lib/utils";
 import UpdatedDate from "../date/UpdatedDate";
 
 const removeHtmlTags = (str) => {
@@ -9,7 +9,6 @@ const removeHtmlTags = (str) => {
 };
 
 const PostCard = async ({ blog }) => {
-  // const base64Url = await getBase64(blog.img);
   return (
     <div className={styles.card}>
       <div className={styles.imgContainer}>
@@ -18,8 +17,6 @@ const PostCard = async ({ blog }) => {
           alt="Post-Img"
           fill
           sizes="100vw"
-          placeholder="blur"
-          // blurDataURL={base64Url}
           className="img-cover"
         />
       </div>

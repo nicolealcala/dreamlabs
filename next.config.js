@@ -1,6 +1,5 @@
 // import withPlaiceholder from '@plaiceholder/next'
 /** @type {import('next').NextConfig} */
-// import { defaultConfig } from 'next/dist/server/config-shared'
 const nextConfig = {
     images: {
         remotePatterns: [
@@ -17,4 +16,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-// export default withPlaiceholder(nextConfig)
