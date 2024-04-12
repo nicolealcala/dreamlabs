@@ -54,12 +54,6 @@ const CommentForm = ({ session, blogId }) => {
           disabled={isCommenting}
         >
           {isCommenting ? "Commenting..." : "Comment"}
-        <button
-          type="submit"
-          className="btn primary-btn mt-2"
-          disabled={isCommenting}
-        >
-          {isCommenting ? "Commenting..." : "Comment"}
         </button>
       </div>
     </form>
