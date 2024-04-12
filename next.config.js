@@ -1,4 +1,4 @@
-import withPlaiceholder from '@plaiceholder/next'
+// import withPlaiceholder from '@plaiceholder/next'
 /** @type {import('next').NextConfig} */
 // import { defaultConfig } from 'next/dist/server/config-shared'
 const nextConfig = {
@@ -16,5 +16,5 @@ const nextConfig = {
     }
 }
 
-// module.exports = nextConfig
-export default withPlaiceholder(nextConfig)
+module.exports = nextConfig
+// export default withPlaiceholder(nextConfig)

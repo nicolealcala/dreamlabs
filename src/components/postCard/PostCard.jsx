@@ -9,7 +9,7 @@ const removeHtmlTags = (str) => {
 };
 
 const PostCard = async ({ blog }) => {
-  const base64Url = await getBase64(blog.img);
+  // const base64Url = await getBase64(blog.img);
   return (
     <div className={styles.card}>
       <div className={styles.imgContainer}>
@@ -19,7 +19,7 @@ const PostCard = async ({ blog }) => {
           fill
           sizes="100vw"
           placeholder="blur"
-          blurDataURL={base64Url}
+          // blurDataURL={base64Url}
           className="img-cover"
         />
       </div>
