@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "../blog.module.css";
 import Author from "@/components/postAuthor/Author";
 import { Suspense } from "react";
-import { getBlog, getComments } from "@/lib/data";
+import { getBlog, getComments, getUserByEmail } from "@/lib/data";
 import NotFound from "@/app/not-found";
 import { createMarkup, getBase64 } from "@/lib/utils";
 import { auth } from "@/lib/auth";
@@ -28,6 +28,7 @@ export const dynamicMetadata = async ({ params }) => {
 const BlogPost = async ({ params }) => {
   const { slug } = params;
   const session = await auth();
+  const user = await getUserByEmail(session.user.email);
 
   // FETCH DATA WITHOUT API
   const blog = await getBlog(slug);
@@ -60,7 +61,7 @@ const BlogPost = async ({ params }) => {
               <Author blog={blog} />
             </Suspense>
           </div>
-          {session?.user.id === blog.userId && (
+          {user._id === blog.userId && (
             <div className="col-md-6 d-flex justify-content-start justify-content-md-end align-items-end p-0 mb-3">
               <EditBtn blog={blog} />
               <DeleteBtn blogId={blog?._id} />
@@ -79,7 +80,7 @@ const BlogPost = async ({ params }) => {
             <div className="col-12 mt-3">This post has no comments yet.</div>
           )}
           <div className="col-12 mt-3">
-            <CommentForm session={session} blogId={blog._id} />
+            <CommentForm user={user} blogId={blog._id} />
           </div>
           <hr className="my-4" />
           {comments.length > 0 && (
@@ -91,7 +92,7 @@ const BlogPost = async ({ params }) => {
                 <>
                   <Suspense fallback={<CommentsSkeleton />}>
                     <CommentBox
-                      session={session}
+                      user={user}
                       comment={comment}
                       poster={blog.userId}
                       key={comment._id}

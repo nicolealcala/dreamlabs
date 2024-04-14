@@ -2,8 +2,7 @@ import BackToTop from "@/components/backtotop/BackToTop";
 import PostCard from "@/components/postCard/PostCard";
 import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
-import { getBlogs } from "@/lib/data";
-import styles from "./blog.module.css";
+import { getBlogs, getUserByEmail } from "@/lib/data";
 import { Suspense } from "react";
 import Skeleton from "@/components/postCard/Skeleton";
 
@@ -32,15 +31,16 @@ const Blogs = async () => {
   // FETCH DATA WITHOUT AN API
   const blogs = await getBlogs();
   const session = await auth();
+  const user = await getUserByEmail(session.user.email);
 
   if (blogs.length === 0) {
     return (
       <div>
         <h2>No posts yet.</h2>
-        {session?.user.isAdmin ? (
+        {user.isAdmin ? (
           <>
             <p>Come back later or create a new post.</p>
-            <AddBtn btnName="+ Create Blog" userId={session?.user.id} />
+            <AddBtn btnName="+ Create Blog" userId={user._id} />
           </>
         ) : (
           <>
@@ -53,20 +53,16 @@ const Blogs = async () => {
 
   return (
     <div className="row mx-0 p-3">
-      {session?.user.isAdmin && (
+      {user.isAdmin && (
         <div className="col-12 text-end px-0 pb-3">
-          <AddBtn
-            btnId="addBtnLg"
-            btnName="+ Add blog"
-            userId={session?.user.id}
-          />
+          <AddBtn btnId="addBtnLg" btnName="+ Add blog" userId={user.id} />
         </div>
       )}
 
       {blogs.map((blog) => (
         <div className={`col-md-6 col-lg-4 mb-4 blogCol`} key={blog._id}>
           <Suspense fallback={<Skeleton />}>
-            <PostCard item={blog} />
+            <PostCard blog={blog} />
           </Suspense>
         </div>
       ))}
