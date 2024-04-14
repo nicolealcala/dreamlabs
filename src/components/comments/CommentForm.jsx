@@ -3,7 +3,7 @@ import { addComment } from "@/lib/actions";
 import Image from "next/image";
 import { useState } from "react";
 
-const CommentForm = ({ session, blogId }) => {
+const CommentForm = ({ user, blogId }) => {
   const [content, setContent] = useState("");
   const [isCommenting, setIsCommenting] = useState(false);
 
@@ -29,7 +29,7 @@ const CommentForm = ({ session, blogId }) => {
       data-bs-theme="dark"
     >
       <Image
-        src={session.user.img || session.user.image}
+        src={user.img || user.image}
         width={35}
         height={35}
         alt="Commentor Image"
@@ -46,7 +46,7 @@ const CommentForm = ({ session, blogId }) => {
           placeholder="Write a comment..."
           required
         ></textarea>
-        <input type="hidden" name="userId" value={session?.user.id} />
+        <input type="hidden" name="userId" value={user._id} />
         <input type="hidden" name="blogId" value={blogId} />
         <button
           type="submit"

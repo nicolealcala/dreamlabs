@@ -6,12 +6,12 @@ import DeleteBtn from "./DeleteBtn";
 import EditBtn from "./EditBtn";
 import UpdatedDate from "../date/UpdatedDate";
 
-const CommentBox = async ({ session, comment, poster }) => {
-  const user = await getUser(comment?.userId);
+const CommentBox = async ({ user, comment, poster }) => {
+  const commentor = await getUser(comment?.userId);
   return (
     <div className="d-flex commentForm mb-3" data-bs-theme="dark">
       <Image
-        src={user?.img}
+        src={commentor?.img}
         width={35}
         height={35}
         alt="Commentor Image"
@@ -28,7 +28,7 @@ const CommentBox = async ({ session, comment, poster }) => {
             <div className="me-3">
               <p className="txt-size-sm my-0 ">
                 <em className="txt-color-yellow txt-weight-mid">
-                  @{user?.username}
+                  @{commentor?.username}
                 </em>
                 {poster === comment.userId && (
                   <span className="txt-weight-normal txt-color-mid txt-size-sm">
@@ -45,7 +45,7 @@ const CommentBox = async ({ session, comment, poster }) => {
                   comment.updatedAt.getTime() && <span> (Edited)</span>}
               </p>
 
-              {session?.user.id === comment.userId && (
+              {user._id === comment.userId && (
                 <div className="dropup" data-bs-theme="light">
                   <button
                     className="bg-transparent border-0 btn p-0 ms-1 d-flex align-items-center text-light"

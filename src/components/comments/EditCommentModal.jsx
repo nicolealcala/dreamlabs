@@ -7,23 +7,36 @@ import { updateComment } from "@/lib/actions";
 import Tiptap from "../tiptap/Tiptap";
 
 const EditModal = ({ showModal, setShowModal, comment }) => {
+  const origContent = comment.content;
   const [content, setContent] = useState(comment?.content);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+
     try {
+      setSubmitting(true);
       await updateComment(comment._id, comment.blogId, formData);
-      Swal.fire({
-        title: "Success",
-        html: "<em>Your comment has been updated!</em>",
+      Toast.fire({
         icon: "success",
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Comment updated",
       });
+      setSubmitting(false);
       handleClose();
     } catch (err) {
       console.error(err);
+      Toast.fire({
+        icon: "error",
+        title: "Comment failed to update",
+      });
     }
   };
 
@@ -82,7 +95,7 @@ const EditModal = ({ showModal, setShowModal, comment }) => {
             className="primary-btn"
             variant="none"
             type="submit"
-            disabled={!content}
+            disabled={origContent === content || submitting}
           >
             Submit
           </Button>

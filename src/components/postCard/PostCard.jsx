@@ -5,7 +5,7 @@ import { truncateContent } from "@/lib/utils";
 import UpdatedDate from "../date/UpdatedDate";
 
 const removeHtmlTags = (str) => {
-  return str.replace(/<[^>]*>/g, " ");
+  return str?.replace(/<[^>]*>/g, " ");
 };
 
 const PostCard = async ({ blog }) => {
@@ -28,7 +28,7 @@ const PostCard = async ({ blog }) => {
           {truncateContent(blog?.title, 45)}
         </h6>
         <p className={styles.desc}>
-          {truncateContent(removeHtmlTags(blog.content), 70)}
+          {truncateContent(removeHtmlTags(blog?.content), 70)}
         </p>
         <Link href={`/blogs/${blog?.slug}`} className="link">
           READ MORE

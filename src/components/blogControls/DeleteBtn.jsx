@@ -14,18 +14,26 @@ const DeleteBtn = ({ blogId }) => {
       reverseButtons: true,
     }).then(async (result) => {
       if (result.isConfirmed) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-end",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+
         try {
           await deleteBlog(blogId);
-          Swal.fire({
-            title: "Success",
-            html: "<em>You blog was deleted!</em>",
+          Toast.fire({
             icon: "success",
-            showConfirmButton: false,
-            timer: 1500,
+            title: "Blog deleted",
           });
           router.push("/blogs");
         } catch (err) {
           console.log(err);
+          Toast.fire({
+            icon: "error",
+            title: "Failed to delete blog",
+          });
         }
       }
     });

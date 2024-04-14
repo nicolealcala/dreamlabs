@@ -15,20 +15,29 @@ const EditBlogModal = ({ showModal, setShowModal, blog }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+
     try {
       const formData = new FormData(e.target);
       const newBlog = await updateBlog(blog._id, formData);
-      Swal.fire({
-        title: "Success",
-        html: "<em>Your blog post was updated.</em>",
+      Toast.fire({
         icon: "success",
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Blog updated",
       });
       handleClose();
       router.push(`/blogs/${newBlog.slug}`);
     } catch (err) {
       console.log(err);
+      Toast.fire({
+        icon: "error",
+        title: "Blog failed to update",
+      });
     }
   };
 

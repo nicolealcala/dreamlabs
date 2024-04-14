@@ -15,19 +15,28 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+
     try {
       await addBlog(formData);
-      Swal.fire({
-        title: "Success",
-        html: "<em>Blog has been posted!</em>",
+      Toast.fire({
         icon: "success",
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Blog posted",
       });
       handleClose();
       router.push("/blogs");
     } catch (err) {
       console.error(err);
+      Toast.fire({
+        icon: "error",
+        title: "Blog post failed",
+      });
     }
   };
 

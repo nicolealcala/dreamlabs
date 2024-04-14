@@ -15,12 +15,15 @@ const DeleteBtn = ({ commentId }) => {
       if (result.isConfirmed) {
         try {
           await deleteComment(commentId);
-          Swal.fire({
-            title: "Success",
-            html: "<em>You comment was deleted!</em>",
-            icon: "success",
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom-end",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 3000,
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Comment deleted",
           });
         } catch (err) {
           console.log(err);
