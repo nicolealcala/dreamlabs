@@ -97,7 +97,14 @@ const EditModal = ({ showModal, setShowModal, comment }) => {
             type="submit"
             disabled={origContent === content || submitting}
           >
-            Submit
+            {submitting ? (
+              <>
+                <span className="spinner-border spinner-border-sm me-2"></span>
+                Submitting
+              </>
+            ) : (
+              "Submit"
+            )}
           </Button>
         </Modal.Footer>
       </Form>

@@ -28,7 +28,6 @@ export const dynamicMetadata = async ({ params }) => {
 const BlogPost = async ({ params }) => {
   const { slug } = params;
   const session = await auth();
-  const user = await getUserByEmail(session.user.email);
 
   // FETCH DATA WITHOUT API
   const blog = await getBlog(slug);
@@ -61,7 +60,7 @@ const BlogPost = async ({ params }) => {
               <Author blog={blog} />
             </Suspense>
           </div>
-          {user._id === blog.userId && (
+          {session.user.id === blog.userId && (
             <div className="col-md-6 d-flex justify-content-start justify-content-md-end align-items-end p-0 mb-3">
               <EditBtn blog={blog} />
               <DeleteBtn blogId={blog?._id} />
@@ -80,7 +79,7 @@ const BlogPost = async ({ params }) => {
             <div className="col-12 mt-3">This post has no comments yet.</div>
           )}
           <div className="col-12 mt-3">
-            <CommentForm user={user} blogId={blog._id} />
+            <CommentForm user={session.user} blogId={blog._id} />
           </div>
           <hr className="my-4" />
           {comments.length > 0 && (
@@ -89,16 +88,16 @@ const BlogPost = async ({ params }) => {
                 {comments.length > 0 && "Comments"}
               </div>
               {comments.map((comment) => (
-                <>
+                <div key={comment._id}>
                   <Suspense fallback={<CommentsSkeleton />}>
                     <CommentBox
-                      user={user}
+                      user={session.user}
                       comment={comment}
                       poster={blog.userId}
                       key={comment._id}
                     />
                   </Suspense>
-                </>
+                </div>
               ))}
             </>
           )}

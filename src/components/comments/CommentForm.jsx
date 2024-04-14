@@ -2,6 +2,7 @@
 import { addComment } from "@/lib/actions";
 import Image from "next/image";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const CommentForm = ({ user, blogId }) => {
   const [content, setContent] = useState("");
@@ -10,15 +11,29 @@ const CommentForm = ({ user, blogId }) => {
   const handleAddComment = async (e) => {
     e.preventDefault();
     setIsCommenting(true);
-    setIsCommenting(true);
     const formData = new FormData(e.target);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+
     try {
       await addComment(formData);
       setContent("");
       setIsCommenting(false);
-      setIsCommenting(false);
+      Toast.fire({
+        icon: "success",
+        title: "Comment added",
+      });
     } catch (err) {
       console.error(err);
+      Toast.fire({
+        icon: "error",
+        title: "Failed to add comment",
+      });
     }
   };
 
@@ -46,14 +61,21 @@ const CommentForm = ({ user, blogId }) => {
           placeholder="Write a comment..."
           required
         ></textarea>
-        <input type="hidden" name="userId" value={user._id} />
+        <input type="hidden" name="userId" value={user.id} />
         <input type="hidden" name="blogId" value={blogId} />
         <button
           type="submit"
           className="btn primary-btn mt-2"
           disabled={isCommenting}
         >
-          {isCommenting ? "Commenting..." : "Comment"}
+          {isCommenting ? (
+            <>
+              <span className="spinner-border spinner-border-sm me-2"></span>
+              Commenting
+            </>
+          ) : (
+            "Comment"
+          )}
         </button>
       </div>
     </form>

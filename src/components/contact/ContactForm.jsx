@@ -120,15 +120,7 @@ const ContactForm = () => {
           <button
             type="submit"
             className="btn primary-btn"
-            disabled={
-              isSending ||
-              !(
-                formData.fname &&
-                formData.email &&
-                formData.subject &&
-                formData.message
-              )
-            }
+            disabled={isSending}
           >
             {isSending ? (
               <>

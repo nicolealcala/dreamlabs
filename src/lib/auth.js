@@ -61,6 +61,11 @@ export const {
 
                         await newUser.save();
                     }
+                    user.id = exist._id;
+                    user.username = exist.username;
+                    user.img = exist.img;
+                    user.isAdmin = exist.isAdmin;
+
                 } catch (error) {
                     return false
                 }
