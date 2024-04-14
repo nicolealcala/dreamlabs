@@ -1,5 +1,3 @@
-import { getUserByEmail } from "./data";
-
 export const authConfig = {
     pages: {
         signIn: "/login",
@@ -14,12 +12,6 @@ export const authConfig = {
                 token.img = user.img;
             }
 
-            const exist = getUserByEmail()
-            // update user here
-            // user.id = exist.id;
-            // user.isAdmin = exist.isAdmin;
-            // user.username = exist.username;
-
             return token;
         },
         async session({ session, token }) {
@@ -33,7 +25,7 @@ export const authConfig = {
         },
         authorized({ auth, request }) {
             const user = auth?.user;
-            console.log(user);
+            // console.log(user);
 
             const onAdminPage = request.nextUrl?.pathname.startsWith("/admin");
             const onBlogPage = request.nextUrl?.pathname.startsWith("/blogs");

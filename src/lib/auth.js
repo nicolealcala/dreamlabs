@@ -61,9 +61,11 @@ export const {
 
                         await newUser.save();
                     }
-
+                    // console.log(user, account, profile);
+                    user.id = exist.id;
+                    user.isAdmin = exist.isAdmin;
+                    user.username = exist.username;
                 } catch (error) {
-                    console.log(error);
                     return false
                 }
             }
