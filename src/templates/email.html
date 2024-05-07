@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .base {
+            border: 1px solid #AEAEAE;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .header {
+            background: linear-gradient(130deg, rgba(28, 11, 36, 1) 0%, rgba(33, 18, 60, 1) 60%, rgba(62, 30, 64, 1) 100%) !important;
+            font-size: 24px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            padding-inline: 10px;
+            font-weight: 500;
+        }
+
+        .header::after {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #f41afd;
+            border-radius: 50%;
+            margin-left: 5px;
+            position: relative;
+        }
+
+        .message {
+            border: 1px solid #AEAEAE;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div className="base">
+        <div className="header">
+            dreamlabs
+        </div>
+        <div className="p-3 text-dark">
+            <h3>You have a message.</h3>
+            <p>Someone wants to reach you out via Dreamlabs.</p>
+            <p>Here&apos;s what we got:</p>
+            <div className="message">
+                ${htmlData}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

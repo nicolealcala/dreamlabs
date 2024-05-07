@@ -22,13 +22,13 @@ export async function POST(req) {
             html: `
             <h3>Hello, Nicole</h3>
             <p>Someone sent a message from your Dreamlabs app.</p>
-            <ul>
-            <li><strong>Full name:</strong> ${fname}</li><br />
-            ${phone ? `<li><strong>Phone number:</strong> ${phone}</li><br />` : ''}
-            <li><strong>Email:</strong> ${email}</li><br />
-            <li><strong>Subject:</strong> ${subject}</li><br />
-            <li><strong>Message:</strong> ${message}</li><br />
-            </ul>
+            <div style="margin-top: 10px; border: 1px solid #AEAEAE; border-radius: 10px;">
+            <span><strong>Name:</strong> ${fname}</span><br />
+            ${phone ? `<span><strong>Phone number:</strong> ${phone}</span><br />` : ''}
+            <span><strong>Email:</strong> ${email}</span><br />
+            <span><strong>Subject:</strong> ${subject}</span><br />
+            <span><strong>Message:</strong> ${message}</span><br />
+            </div>
             `
         }
 
