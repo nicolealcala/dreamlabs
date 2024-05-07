@@ -85,7 +85,7 @@ const LoginForm = () => {
           </div>
         </div>
       </form>
-      <div className="d-flex align-items-center w-100 px-5">
+      {/* <div className="d-flex align-items-center w-100 px-5">
         <hr className="w-100" />
         <span className="text-muted mx-3">or</span>
         <hr className="w-100" />
@@ -104,7 +104,7 @@ const LoginForm = () => {
           />
           Sign in with Github
         </button>
-      </form>
+      </form> */}
       <div className="col-12 d-flex justify-content-center mt-4">
         New user? &nbsp;
         <Link href="/register" className="txt-weight-mid link">

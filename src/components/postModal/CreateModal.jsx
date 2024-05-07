@@ -9,7 +9,7 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [img, setImg] = useState("");
-
+  const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -24,11 +24,13 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
     });
 
     try {
+      setSubmitting(true);
       await addBlog(formData);
       Toast.fire({
         icon: "success",
         title: "Blog posted",
       });
+      setSubmitting(false);
       handleClose();
       router.push("/blogs");
     } catch (err) {
@@ -121,9 +123,16 @@ const CreateModal = ({ showModal, setShowModal, userId }) => {
             className="primary-btn"
             variant="none"
             type="submit"
-            disabled={!(title && content)}
+            disabled={!(title && content) || submitting}
           >
-            Submit
+            {submitting ? (
+              <>
+                <span className="spinner-border spinner-border-sm me-2"></span>
+                Submitting
+              </>
+            ) : (
+              "Submit"
+            )}
           </Button>
         </Modal.Footer>
       </Form>

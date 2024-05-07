@@ -20,7 +20,7 @@ const CommentBox = async ({ user, comment, poster }) => {
       <div className="d-flex flex-column w-auto ms-2">
         <div className="form-control commentBox border-0 p-0">
           <div
-            className="txt-weight-normal px-3 pt-3"
+            className="txt-weight-normal px-2 pt-2"
             dangerouslySetInnerHTML={createMarkup(comment?.content)}
           ></div>
           <hr className="my-0" />
@@ -45,7 +45,7 @@ const CommentBox = async ({ user, comment, poster }) => {
                   comment.updatedAt.getTime() && <span> (Edited)</span>}
               </p>
 
-              {user._id === comment.userId && (
+              {user.id === comment.userId && (
                 <div className="dropup" data-bs-theme="light">
                   <button
                     className="bg-transparent border-0 btn p-0 ms-1 d-flex align-items-center text-light"

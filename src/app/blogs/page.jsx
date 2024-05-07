@@ -31,16 +31,15 @@ const Blogs = async () => {
   // FETCH DATA WITHOUT AN API
   const blogs = await getBlogs();
   const session = await auth();
-  const user = await getUserByEmail(session.user.email);
 
   if (blogs.length === 0) {
     return (
       <div>
         <h2>No posts yet.</h2>
-        {user.isAdmin ? (
+        {session.user.isAdmin ? (
           <>
             <p>Come back later or create a new post.</p>
-            <AddBtn btnName="+ Create Blog" userId={user._id} />
+            <AddBtn btnName="+ Create Blog" userId={session.user.id} />
           </>
         ) : (
           <>
@@ -53,9 +52,13 @@ const Blogs = async () => {
 
   return (
     <div className="row mx-0 p-3">
-      {user.isAdmin && (
+      {session.user.isAdmin && (
         <div className="col-12 text-end px-0 pb-3">
-          <AddBtn btnId="addBtnLg" btnName="+ Add blog" userId={user.id} />
+          <AddBtn
+            btnId="addBtnLg"
+            btnName="+ Add blog"
+            userId={session.user.id}
+          />
         </div>
       )}
 
