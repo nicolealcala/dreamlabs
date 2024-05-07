@@ -16,7 +16,7 @@ export async function POST(req) {
         })
 
         const mailOptionsToAdmin = {
-            from: process.env.EMAIL_FROM,
+            from: `"Nicole Alcala - Notifications" <${process.env.EMAIL_FROM}>`,
             to: process.env.EMAIL_TO,
             subject: "Dreamlabs: You got a message.",
             html: `
@@ -67,7 +67,7 @@ export async function POST(req) {
         }
 
         const mailOptionsToUser = {
-            from: process.env.EMAIL_FROM,
+            from: `"Nicole Alcala - Notifications" <${process.env.EMAIL_FROM}>`,
             to: email,
             subject: "Dreamlabs: Your message has been received – We're on it! 🚀.",
             html: `
