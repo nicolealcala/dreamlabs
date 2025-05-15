@@ -1,6 +1,6 @@
 import Image from "next/image";
 import AboutImg from "../../../public/about.png";
-
+import BannerImg from "../../../public/hackathon-banner.png";
 export const metadata = {
   title: "About",
   description: "DreamLabs about page",
@@ -8,6 +8,13 @@ export const metadata = {
 const About = () => {
   return (
     <div className="row mx-0">
+      <Image
+        src={BannerImg}
+        alt="Banner Image"
+        // sizes="100vw"
+        placeholder="blur"
+        className="img-contain"
+      />
       <div className="col-lg-6 d-flex flex-column justify-content-evenly py-5 gap-4">
         <div className="row mx-0">
           <div className="col-12">
