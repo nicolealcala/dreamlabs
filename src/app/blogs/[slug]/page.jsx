@@ -10,7 +10,7 @@ import CommentForm from "@/components/comments/CommentForm";
 import CommentBox from "@/components/comments/CommentBox";
 import DeleteBtn from "@/components/blogControls/DeleteBtn";
 import EditBtn from "@/components/blogControls/EditBtn";
-import BackToTop from "@/components/backtotop/BackToTop";
+import BackToTop from "@/components/backToTop/BackToTop";
 import CommentsSkeleton from "@/components/comments/Skeleton";
 import AuthorSkeleton from "@/components/postAuthor/Skeleton";
 

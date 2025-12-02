@@ -1,4 +1,4 @@
-import BackToTop from "@/components/backtotop/BackToTop";
+import BackToTop from "@/components/backToTop/BackToTop";
 import PostCard from "@/components/postCard/PostCard";
 import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
