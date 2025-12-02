@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 
 const links = [
   { path: "/", title: "Home" },
-  { path: "/about", title: "About" },
+  { path: "/about-us", title: "About" },
   { path: "/contact", title: "Contact" },
   { path: "/blogs", title: "Blogs" },
 ];
