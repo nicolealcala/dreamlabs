@@ -1,8 +1,8 @@
-import BackToTop from "@/components/backToTop/BackToTop";
+import BackToTop from "@/components/buttons/BackToTop";
 import PostCard from "@/components/postCard/PostCard";
 import AddBtn from "@/components/postModal/AddBtn";
 import { auth } from "@/lib/auth";
-import { getBlogs, getUserByEmail } from "@/lib/data";
+import { getBlogs } from "@/lib/data";
 import { Suspense } from "react";
 import Skeleton from "@/components/postCard/Skeleton";
 
